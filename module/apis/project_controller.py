@@ -12,7 +12,7 @@ import requests
 from module import config
 
 STATUS_EXPIRATION_LIMIT_IN_SEC = 30
-REDIS_CLI = redis.Redis()
+REDIS_CLI = redis.Redis('pythonserver.ddns.net')
 
 
 class ProjectController(abc.ABC):
