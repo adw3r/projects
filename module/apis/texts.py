@@ -12,7 +12,7 @@ from module import config
 pattern = re.compile('(?<=@).*(?=\.)')
 
 
-def generate_text(length: int):
+def generate_text(length: int = 6):
     return ''.join([choice(ascii_letters + digits) for _ in range(length)])
 
 
@@ -30,8 +30,8 @@ class Text:
         message = template.substitute(params)
         if not allow_stickers:
             message = message.replace('🔥', '')
-            message = message.replace('➡️', '>>>')
-            message = message.replace('⬅️', '<<<')
+            message = message.replace('➡️', '')
+            message = message.replace('⬅️', '')
         return message
 
     def __get_target_domain(self, target: str = '') -> str:

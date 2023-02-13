@@ -53,7 +53,8 @@ class SpamConfig:
             self.__init_from_config()
         else:
             self.__init_from_apis(proxy_pool_name, ref_name, success_message, target_pool_name)
-            self.__dump_config()
+            if 'scratch' not in project_name:
+                self.__dump_config()
         self.text_instance = Text(self.lang, self.promo_link, self.ref_name, self.text, self.spins)
         self.proxy_instance = ProxyServerPool(self.proxy_pool_name)
         self.target_instance = TargetServerPool(self.target_pool_name)

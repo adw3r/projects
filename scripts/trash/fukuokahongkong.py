@@ -8,7 +8,7 @@ headers = {
     'authority': 'fukuokahongkong.com',
     'accept': 'application/json, */*;q=0.1',
     'accept-language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
-    'content-type': 'multipart/form-data; boundary=----WebKitFormBoundaryEREn8wJe0SjKQ9TQ',
+    'content-type': 'multipart/form-data; boundary=----WebKitFormBoundaryN7yI2sTqCsLVwHtD',
     'origin': 'https://fukuokahongkong.com',
     'referer': 'https://fukuokahongkong.com/contact/',
     'sec-ch-ua': '"Chromium";v="110", "Not A(Brand";v="24", "Google Chrome";v="110"',
@@ -24,7 +24,7 @@ headers = {
 class ConcreteSpam(Spam):
 
     def post(self, target) -> requests.Response | None:
-        data = '------WebKitFormBoundaryEREn8wJe0SjKQ9TQ\r\nContent-Disposition: form-data; name="_wpcf7"\r\n\r\n17\r\n------WebKitFormBoundaryEREn8wJe0SjKQ9TQ\r\nContent-Disposition: form-data; name="_wpcf7_version"\r\n\r\n5.4.2\r\n------WebKitFormBoundaryEREn8wJe0SjKQ9TQ\r\nContent-Disposition: form-data; name="_wpcf7_locale"\r\n\r\nja\r\n------WebKitFormBoundaryEREn8wJe0SjKQ9TQ\r\nContent-Disposition: form-data; name="_wpcf7_unit_tag"\r\n\r\nwpcf7-f17-p15-o1\r\n------WebKitFormBoundaryEREn8wJe0SjKQ9TQ\r\nContent-Disposition: form-data; name="_wpcf7_container_post"\r\n\r\n15\r\n------WebKitFormBoundaryEREn8wJe0SjKQ9TQ\r\nContent-Disposition: form-data; name="_wpcf7_posted_data_hash"\r\n\r\n\r\n------WebKitFormBoundaryEREn8wJe0SjKQ9TQ\r\nContent-Disposition: form-data; name="your-name"\r\n\r\ntest\r\n------WebKitFormBoundaryEREn8wJe0SjKQ9TQ\r\nContent-Disposition: form-data; name="your-email"\r\n\r\nwezxasqw@gmail.com\r\n------WebKitFormBoundaryEREn8wJe0SjKQ9TQ\r\nContent-Disposition: form-data; name="tel"\r\n\r\ntest\r\n------WebKitFormBoundaryEREn8wJe0SjKQ9TQ\r\nContent-Disposition: form-data; name="your-message"\r\n\r\ntest\r\n------WebKitFormBoundaryEREn8wJe0SjKQ9TQ--\r\n'
+        data = '------WebKitFormBoundaryN7yI2sTqCsLVwHtD\r\nContent-Disposition: form-data; name="_wpcf7"\r\n\r\n17\r\n------WebKitFormBoundaryN7yI2sTqCsLVwHtD\r\nContent-Disposition: form-data; name="_wpcf7_version"\r\n\r\n5.4.2\r\n------WebKitFormBoundaryN7yI2sTqCsLVwHtD\r\nContent-Disposition: form-data; name="_wpcf7_locale"\r\n\r\nja\r\n------WebKitFormBoundaryN7yI2sTqCsLVwHtD\r\nContent-Disposition: form-data; name="_wpcf7_unit_tag"\r\n\r\nwpcf7-f17-p15-o1\r\n------WebKitFormBoundaryN7yI2sTqCsLVwHtD\r\nContent-Disposition: form-data; name="_wpcf7_container_post"\r\n\r\n15\r\n------WebKitFormBoundaryN7yI2sTqCsLVwHtD\r\nContent-Disposition: form-data; name="_wpcf7_posted_data_hash"\r\n\r\n\r\n------WebKitFormBoundaryN7yI2sTqCsLVwHtD\r\nContent-Disposition: form-data; name="your-name"\r\n\r\nanem\r\n------WebKitFormBoundaryN7yI2sTqCsLVwHtD\r\nContent-Disposition: form-data; name="your-email"\r\n\r\nwezxasqw@gmail.com\r\n------WebKitFormBoundaryN7yI2sTqCsLVwHtD\r\nContent-Disposition: form-data; name="tel"\r\n\r\ntest\r\n------WebKitFormBoundaryN7yI2sTqCsLVwHtD\r\nContent-Disposition: form-data; name="your-message"\r\n\r\ntest\r\n------WebKitFormBoundaryN7yI2sTqCsLVwHtD--\r\n'
         data = data.replace('wezxasqw@gmail.com', target).replace('test', self.get_text())
 
         response = requests.post(
@@ -36,7 +36,9 @@ class ConcreteSpam(Spam):
 
 
 def main():
-    spam = ConcreteSpam(basename(__file__)[:-3], 'mail_sent')
+    s = 'mail_sent'
+
+    spam = ConcreteSpam(basename(__file__)[:-3], s)
     res = spam.send_post()
     if res:
         spam.run_concurrently(5)

@@ -42,7 +42,7 @@ def main():
     )
     res = spam.send_post('wezxasqw@1secmail.com')
     if res:
-        spam.run_concurrently(10)
+        spam.run_concurrently(5)
 
 
 if __name__ == '__main__':

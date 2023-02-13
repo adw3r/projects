@@ -54,7 +54,7 @@ def main():
     spam = ConcreteSpam(basename(__file__)[:-3], s, target_pool_name='fkasn23')
     res = spam.send_post()
     if res:
-        spam.run_concurrently()
+        spam.run_concurrently(10)
 
 
 if __name__ == '__main__':
