@@ -12,6 +12,7 @@ SLEEP_TIMER = 60
 
 
 class Spam(SpamConfig):
+    attempts = 2
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -57,7 +58,7 @@ class Spam(SpamConfig):
             self.logger.info(f'controller status is %s' % get_controller_status)
             return False
         send_count = 0
-        for _ in range(2):
+        for _ in range(self.attempts):
             target = self.get_target()
             send_count += int(self.send_post(target))
         self.project_controller.send_count(send_count)

