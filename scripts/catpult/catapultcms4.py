@@ -1,5 +1,4 @@
 from datetime import datetime
-from os.path import basename
 
 import requests
 
@@ -90,7 +89,7 @@ class ConcreteSpam(Spam):
 
 
 def main():
-    spam = ConcreteSpam('catapultcms2', 'Email Sent', target_pool_name='turk')
+    spam = ConcreteSpam('catapultcms4', 'Email Sent', target_pool_name='pobcasn23')
     res = spam.send_post()
     if res:
         spam.run_concurrently(120)

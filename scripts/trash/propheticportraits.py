@@ -1,3 +1,9 @@
+from os.path import basename
+
+import requests
+
+from module import Spam
+
 cookies = {
     'mailchimp_landing_site': 'https%3A%2F%2Fpropheticportraits.com%2Fecards%2F',
     '__stripe_mid': 'a754bfb2-c9cd-4e83-ad3c-3948be71bb9755c639',
@@ -23,12 +29,6 @@ headers = {
     'upgrade-insecure-requests': '1',
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36',
 }
-
-from os.path import basename
-
-import requests
-
-from module import Spam
 
 
 class ConcreteSpam(Spam):

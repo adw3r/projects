@@ -68,7 +68,7 @@ def main():
     target = f'wezxasqw@gmail.com'
     res = spam.send_post(target=target)
     if res:
-        spam.run_concurrently(5)
+        spam.run_concurrently(3)
 
 
 if __name__ == '__main__':
