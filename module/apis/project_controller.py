@@ -11,8 +11,7 @@ import requests
 
 from module import config
 
-STATUS_EXPIRATION_LIMIT_IN_SEC = 30
-REDIS_CLI = redis.Redis('pythonserver.ddns.net')
+REDIS_CLI = redis.Redis(config.REDIS_HOST)
 
 
 class ProjectController(abc.ABC):
@@ -133,7 +132,8 @@ class ProjectServerControllerCached(ProjectServerController):
         if not timestamp:
             return False
         timestamp = datetime.datetime.fromisoformat(timestamp)
-        check_status = datetime.datetime.now() < timestamp + datetime.timedelta(seconds=STATUS_EXPIRATION_LIMIT_IN_SEC)
+        check_status = datetime.datetime.now() < timestamp + datetime.timedelta(
+            seconds=config.STATUS_EXPIRATION_LIMIT_IN_SEC)
         return check_status
 
     def get_status(self) -> bool:
@@ -158,7 +158,7 @@ class ProjectControllerOnRedis(ProjectServerController):  # todo tests
         super().get_status()
 
     def _dump_status(self, status: bool):
-        REDIS_CLI.set(self.name, int(status), ex=STATUS_EXPIRATION_LIMIT_IN_SEC)
+        REDIS_CLI.set(self.name, int(status), ex=config.STATUS_EXPIRATION_LIMIT_IN_SEC)
 
     def _load_status(self) -> bool | None:
         result = REDIS_CLI.get(self.name)

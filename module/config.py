@@ -30,6 +30,8 @@ def get_args() -> Namespace:
     return args
 
 
+STATUS_EXPIRATION_LIMIT_IN_SEC = config['general'].getint('STATUS_EXPIRATION_LIMIT_IN_SEC')
+REDIS_HOST = config['general']['REDIS_HOST']
 TARGETS_HOST = config['general']['TARGETS_HOST']
 PROXIES_HOST = config['general']['PROXIES_HOST']
 TEXTS_HOST = config['general']['TEXTS_HOST']
