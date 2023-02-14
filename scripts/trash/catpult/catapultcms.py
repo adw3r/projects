@@ -92,8 +92,8 @@ class ConcreteSpam(Spam):
 def main():
     spam = ConcreteSpam(basename(__file__)[:-3], 'Email Sent', target_pool_name='g11mp2')
     res = spam.send_post()
-    if res:
-        spam.run_concurrently(120)
+    # if res:
+    #     spam.run_concurrently(120)
 
 
 if __name__ == '__main__':
