@@ -1,5 +1,5 @@
-from time import sleep
 from multiprocessing import Process
+from time import sleep
 
 from module.config import SCRIPTS_FOLDER
 from scripts import *

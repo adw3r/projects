@@ -1,6 +1,6 @@
-from module.apis.texts import Text
-
 from unittest import TestCase
+
+from module.apis.texts import Text
 
 
 class TestTexts(TestCase):
