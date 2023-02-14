@@ -4,6 +4,7 @@ from time import sleep
 from typing import NoReturn
 
 import requests
+from requests.exceptions import ProxyError
 
 from module import config
 from module.spam_config import SpamConfig
@@ -70,15 +71,15 @@ class Spam(SpamConfig):
                 Thread(target=self.__infinite_main).start()
 
     def __try_to_post(self, target: str) -> requests.Response | None:
-        response = None
         for _ in range(10):
             try:
                 response: requests.Response | None = self.post(target=target)
+                return response
+            except ProxyError:
+                pass
             except Exception as e:
                 print(e)
-            else:
-                break
-        return response
+        return
 
     def __infinite_main(self) -> NoReturn:
         while True:

@@ -11,8 +11,8 @@ from module import config
 pattern = re.compile('(?<=@).*(?=\.)')
 
 
-def generate_text(length: int = 6):
-    return ''.join([choice(ascii_letters + digits) for _ in range(length)])
+def generate_text(length: int = 6, sequence=ascii_letters + digits):
+    return ''.join([choice(sequence) for _ in range(length)])
 
 
 class Text:

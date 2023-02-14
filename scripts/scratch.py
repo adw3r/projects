@@ -12,7 +12,7 @@ class ConcreteSpam(Spam):
 
 
 def main():
-    spam = ConcreteSpam(basename(__file__)[:-3])
+    spam = ConcreteSpam(basename(__file__).removesuffix('.py'))
     res = spam.send_post()
     # if res:
     #     spam.run_concurrently()
