@@ -44,7 +44,7 @@ class ConcreteSpam(Spam):
         }
 
         response = requests.post('https://www.wedacon.net/php/contact_form.php', cookies=cookies, headers=headers,
-                                 data=data, proxies=self.get_proxies())
+                                 data=data)
         return response
 
 
@@ -54,7 +54,7 @@ def main():
     spam = ConcreteSpam(basename(__file__)[:-3], s, target_pool_name='fkasn23')
     res = spam.send_post()
     if res:
-        spam.run_concurrently(60)
+        spam.run_concurrently()
 
 
 if __name__ == '__main__':
