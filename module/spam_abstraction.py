@@ -13,7 +13,7 @@ SLEEP_TIMER = 60
 
 
 class Spam(SpamConfig):
-    attempts = 2
+    attempts = 1
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

