@@ -7,7 +7,6 @@ import module
 
 pageurl = 'https://workroutes.co.uk/sign-up-page/'
 url = 'https://hxuevil4.paperform.co/api/v1/form/5f7c65ec1d47c23a5635a8b5/submit'
-googlekey = '6LeCtfEUAAAAAO3mUGL3IUNTHKSYxr0Nf95tJK1g'
 
 
 class ConcreteSpam(module.Spam):

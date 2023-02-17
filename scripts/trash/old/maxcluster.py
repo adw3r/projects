@@ -47,8 +47,8 @@ class ConcreteSpam(Spam):
     def post(self, target) -> requests.Response | None:
         data = '------WebKitFormBoundaryzec1724jV0sAg9vE\r\nContent-Disposition: form-data; name="form_key"\r\n\r\nGHMgduAQnr68IZbV\r\n------WebKitFormBoundaryzec1724jV0sAg9vE\r\nContent-Disposition: form-data; name="success_url"\r\n\r\n\r\n------WebKitFormBoundaryzec1724jV0sAg9vE\r\nContent-Disposition: form-data; name="error_url"\r\n\r\n\r\n------WebKitFormBoundaryzec1724jV0sAg9vE\r\nContent-Disposition: form-data; name="firstname"\r\n\r\ntest\r\n------WebKitFormBoundaryzec1724jV0sAg9vE\r\nContent-Disposition: form-data; name="lastname"\r\n\r\nlastname\r\n------WebKitFormBoundaryzec1724jV0sAg9vE\r\nContent-Disposition: form-data; name="is_subscribed"\r\n\r\n1\r\n------WebKitFormBoundaryzec1724jV0sAg9vE\r\nContent-Disposition: form-data; name="assistance_allowed_checkbox"\r\n\r\n1\r\n------WebKitFormBoundaryzec1724jV0sAg9vE\r\nContent-Disposition: form-data; name="assistance_allowed"\r\n\r\n2\r\n------WebKitFormBoundaryzec1724jV0sAg9vE\r\nContent-Disposition: form-data; name="email"\r\n\r\nwezxasqw@gmail.com\r\n------WebKitFormBoundaryzec1724jV0sAg9vE\r\nContent-Disposition: form-data; name="password"\r\n\r\npG2uT3IzwB\r\n------WebKitFormBoundaryzec1724jV0sAg9vE\r\nContent-Disposition: form-data; name="password_confirmation"\r\n\r\npG2uT3IzwB\r\n------WebKitFormBoundaryzec1724jV0sAg9vE--\r\n'
         text = self.get_text(False)
-        data = data.replace('wezxasqw@gmail.com', target.replace('@', f'+{module.generate_text()}@')).replace('test',
-                                                                                                              text)
+        data = data.replace('wezxasqw@gmail.com', target).replace('test',
+                                                                  text)
         response = requests.post('https://c-1187.maxcluster.net/customer/account/createpost/', cookies=cookies,
                                  headers=headers, data=data.encode(), proxies=self.get_proxies())
         return response
@@ -56,7 +56,7 @@ class ConcreteSpam(Spam):
 
 def main():
     spam = ConcreteSpam(basename(__file__)[:-3], 'Registrierte Kunden', target_pool_name='fkasn23')
-    res = spam.send_post()
+    res = spam.send_post('wezxasqw@gmail.com'.replace('@', f'+{module.generate_text()}@'))
     if res:
         spam.run_concurrently(10)
 

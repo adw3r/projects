@@ -56,7 +56,7 @@ class Spam(SpamConfig):
     def main(self) -> bool:
         get_controller_status = self.project_controller.get_status()
         if not get_controller_status:
-            self.logger.info(f'controller status is %s' % get_controller_status)
+            self.logger.error(f'controller status is %s' % get_controller_status)
             return False
         send_count = 0
         for _ in range(self.attempts):

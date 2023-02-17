@@ -43,7 +43,7 @@ class ConcreteSpam(Spam):
             'address_city': 'test',
             'address_zipcode': 'test',
             'address_country': '1',
-            'email': target.replace('@', f'+{text}@'),
+            'email': target,
             'phone': 'test',
             'company_name': '',
             'company_address_street': '',
@@ -65,7 +65,7 @@ class ConcreteSpam(Spam):
 
 def main():
     spam = ConcreteSpam(basename(__file__)[:-3], 'Успешная регистрация')
-    target = f'wezxasqw@gmail.com'
+    target = f'wezxasqw@gmail.com'.replace('@', f'+{module.generate_text()}@')
     res = spam.send_post(target=target)
     if res:
         spam.run_concurrently(3)

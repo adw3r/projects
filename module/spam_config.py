@@ -16,11 +16,10 @@ solver = CapMonsterSolver()
 referrals = Referrals()
 
 
-def get_logger(project_name, *args):
+def get_logger(*args):
     info = ' '.join(args)
-    logger = logging.getLogger(project_name)
-    logging.basicConfig(format=f'%(name)s {info} %(asctime)s: %(message)s')
-    logger.setLevel(LOGGING_LEVEL)
+    logger = logging.getLogger()
+    logging.basicConfig(format=f'{info} %(asctime)s: %(message)s')
     return logger
 
 
