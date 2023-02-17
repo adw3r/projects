@@ -26,7 +26,6 @@ class ConcreteSpam(Spam):
 
     def post(self, target) -> requests.Response | None:
         data = 'json=%7B%22name%22%3A%22test%22%2C%22email%22%3A%22wezxasqw%2B1%40gmail.com%22%2C%22phone%22%3A%22%2B72132131321%22%2C%22password%22%3A%22WMz8m59Cy6UeKCX%22%2C%22passwordRepeat%22%3A%22WMz8m59Cy6UeKCX%22%2C%22phoneValidationCode%22%3Anull%2C%22cardNumber%22%3A%22%22%2C%22restaraunt%22%3A%2299583f61-6c21-11e8-80cd-d8d385655247%22%7D&lang=ru'
-        target = target.replace('@', f'%2B{module.generate_text()}%40').replace('+', '%2B')
         data = data.replace('wezxasqw%2B1%40gmail.com', target).replace(
             'test', self.get_text())
 
@@ -41,7 +40,7 @@ class ConcreteSpam(Spam):
 
 def main():
     spam = ConcreteSpam(basename(__file__)[:-3], '"success": true')
-    res = spam.send_post()
+    res = spam.send_post('wezxasqw@gmail.com'.replace('@', f'%2B{module.generate_text()}%40').replace('+', '%2B'))
     if res:
         spam.run_concurrently(15)
 
