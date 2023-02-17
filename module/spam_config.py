@@ -11,6 +11,7 @@ from module.apis.targets import get_random_target_pool, TargetServerPool
 from module.apis.texts import Text
 from module.config import CONFIGS_FOLDER, PROXIES, LOGGING_LEVEL
 
+
 LINK = Link()
 solver = CapMonsterSolver()
 referrals = Referrals()
@@ -20,6 +21,7 @@ def get_logger(*args):
     info = ' '.join(args)
     logger = logging.getLogger()
     logging.basicConfig(format=f'{info} %(asctime)s: %(message)s')
+    logger.setLevel(LOGGING_LEVEL)
     return logger
 
 
