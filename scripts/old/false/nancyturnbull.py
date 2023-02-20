@@ -1,5 +1,3 @@
-import requests
-
 cookies = {
     'PHPSESSID': 'n74l37hdjfdq1p276arfppi691',
 }

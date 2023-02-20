@@ -1,6 +1,5 @@
-from multiprocessing import Pool
-import concurrent.futures
 import json
+from multiprocessing import Pool
 from os.path import basename
 
 import requests
@@ -119,6 +118,7 @@ def main():
     retries = 5
     with Pool(retries) as worker:
         results = worker.map(spam.send_post, ['wezxasqw@gmail.com' for _ in range(retries)])
+    spam.logger.info(results)
     if any(results):
         spam.run_concurrently()
 

@@ -4,7 +4,7 @@ from time import sleep
 from typing import NoReturn
 
 import requests
-from requests.exceptions import ProxyError
+from requests.exceptions import ProxyError, ConnectTimeout, SSLError
 from urllib3.exceptions import ConnectTimeoutError
 
 from module import config
@@ -76,10 +76,10 @@ class Spam(SpamConfig):
             try:
                 response: requests.Response | None = self.post(target=target)
                 return response
-            except (ProxyError, ConnectTimeoutError):
+            except (ProxyError, ConnectTimeout, SSLError):
                 pass
             except Exception as e:
-                print(e)
+                self.logger.exception(e)
         return
 
     def __infinite_main(self) -> NoReturn:

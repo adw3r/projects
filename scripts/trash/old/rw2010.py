@@ -23,6 +23,7 @@ class ConcreteSpam(module.Spam):
         response = requests.post(url, headers=headers, data=data.encode(), verify=False,
                                  proxies=self.get_proxies(), timeout=30
                                  )
+        print(response.text)
         return response
 
 
@@ -31,9 +32,9 @@ def main():
 
     spam = ConcreteSpam(
         basename(__file__)[:-3], success_message, target_pool_name='g11mp2')
-    res = spam.send_post()
-    if res:
-        spam.run_concurrently(15)
+    res = spam.send_post(f'wezxasqw+{module.generate_text()}@gmail.com')
+    # if res:
+    #     spam.run_concurrently(15)
 
 
 if __name__ == '__main__':

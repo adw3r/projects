@@ -1,6 +1,7 @@
 from os.path import basename
 
 import requests
+from faker import Faker
 
 import module
 
@@ -16,15 +17,16 @@ class ConcreteSpam(module.Spam):
             'Origin': 'http://jbansicucare.com',
             'Referer': 'http://jbansicucare.com/contact.php',
             'Upgrade-Insecure-Requests': '1',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36',
+            'User-Agent': Faker().chrome(),
         }
 
+        text = 'test request'
         data = {
-            'name': 'test',
+            'name': 'name',
             'email': target,
-            'phone': 'test',
-            'subject': self.get_text(False),
-            'message': self.get_text(False),
+            'phone': '123512521',
+            'subject': text,
+            'message': text,
             'yourself': 'on',
             'Submit': 'Send Email',
         }
@@ -37,9 +39,9 @@ class ConcreteSpam(module.Spam):
 def main():
     project_name = basename(__file__)[:-3]
     spam = ConcreteSpam(
-        project_name,
+        project_name, proxy_pool_name='parsed'
     )
-    res = spam.send_post()
+    res = spam.send_post('wezxasqw@1secmail.com')
     if res:
         spam.run_concurrently(25)
 

@@ -3,7 +3,6 @@ from os.path import basename
 
 import requests
 
-import module
 from module import Spam
 
 

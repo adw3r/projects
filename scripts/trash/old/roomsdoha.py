@@ -2,10 +2,8 @@ from os.path import basename
 
 import requests
 
-from module import Spam
-import requests
-
 import module
+from module import Spam
 
 cookies = {
     'PHPSESSID': 'obl1m3b23g00g85ka2o4fvil3j',

@@ -35,7 +35,7 @@ class ConcreteSpam(Spam):
 
     def post(self, target) -> requests.Response | None:
         data = '------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="_wpcf7"\r\n\r\n14\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="_wpcf7_version"\r\n\r\n5.7.3\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="_wpcf7_locale"\r\n\r\nja\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="_wpcf7_unit_tag"\r\n\r\nwpcf7-f14-p12-o1\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="_wpcf7_container_post"\r\n\r\n12\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="_wpcf7_posted_data_hash"\r\n\r\n\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="your-name"\r\n\r\ntest https://yazoolife.com/contact\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="your-email"\r\n\r\nwezxasqw@gmail.com\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="tel"\r\n\r\ntest https://yazoolife.com/contact\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="your-message"\r\n\r\ntest https://yazoolife.com/contact\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="_wpcf7_ak_hp_textarea"\r\n\r\n\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="_wpcf7_ak_js"\r\n\r\n1675781181312\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="ak_bib"\r\n\r\n1675781183436\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="ak_bfs"\r\n\r\n1675781196397\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="ak_bkpc"\r\n\r\n32\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="ak_bkp"\r\n\r\n128;207,64;192,23;135,113;112,57;127,161;47,112;208,25;72,88;87,113;480;151,56;112,64;81;112;119,33;64,192;128,16;96,80;80,72;96,48;72,72;96,440;64,136;88,16;64,56;72,128;32,248;129,192;72,143;87,121;104,79;\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="ak_bmc"\r\n\r\n79;78,2707;80,752;88,376;104,264;79,6097;53,2516;\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="ak_bmcc"\r\n\r\n7\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="ak_bmk"\r\n\r\n21\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="ak_bck"\r\n\r\n7;27\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="ak_bmmc"\r\n\r\n3\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="ak_btmc"\r\n\r\n0\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="ak_bsc"\r\n\r\n3\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="ak_bte"\r\n\r\n\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="ak_btec"\r\n\r\n0\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr\r\nContent-Disposition: form-data; name="ak_bmm"\r\n\r\n1660,235;1439,155;2800,2017;\r\n------WebKitFormBoundaryCoA3WslZIg1RO6Zr--\r\n'
-        data = data.replace('wezxasqw@gmail.com', target).replace('test', self.get_text(target=target))
+        data = data.replace('wezxasqw@gmail.com', target).replace('test', self.get_text())
         response = requests.post(
             'https://yazoolife.com/wp-json/contact-form-7/v1/contact-forms/14/feedback',
             cookies=cookies,
@@ -48,8 +48,8 @@ class ConcreteSpam(Spam):
 def main():
     spam = ConcreteSpam(basename(__file__)[:-3], 'mail_sent')
     res = spam.send_post()
-    if res:
-        spam.run_concurrently(1)
+    # if res:
+    #     spam.run_concurrently(1)
 
 
 if __name__ == '__main__':
