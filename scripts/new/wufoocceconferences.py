@@ -9,7 +9,7 @@ from module import Spam
 
 def get(session: requests.Session):
     headers = {
-        'authority': 'cceconferences.wufoo.com',
+        'authority': 'wonderpaws.wufoo.com',
         'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
         'accept-language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
         'cache-control': 'max-age=0',
@@ -25,7 +25,7 @@ def get(session: requests.Session):
     }
 
     response = session.get(
-        'https://cceconferences.wufoo.com/forms/s1rg2oqq1p1u7cw/',
+        'https://wonderpaws.wufoo.com/forms/we0ek1z0ax9oa8/',
         headers=headers
     )
     return response
@@ -74,13 +74,13 @@ class ConcreteSpam(Spam):
         if not idstamp:
             return
         text = self.get_text()
-        post_resp = post(s, idstamp[0], text, target.replace('@', f'+{module.generate_text()}@'))
+        post_resp = post(s, idstamp[0], text, target)
         return post_resp
 
 
 def main():
     spam = ConcreteSpam(basename(__file__).removesuffix('.py'), 'Thank you')
-    res = spam.send_post()
+    res = spam.send_post(f'wezxasqw+{module.generate_text()}@gmail.com')
     if res:
         spam.run_concurrently(60)
 

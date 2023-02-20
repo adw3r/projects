@@ -1,4 +1,4 @@
-from scripts.cap import *
-from scripts.temp import *
+from scripts.new import *
+from scripts.old import *
 from scripts.trash import *
-from scripts.work import *
+from scripts.cap import *
