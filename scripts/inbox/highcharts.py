@@ -1,3 +1,6 @@
+from multiprocessing import Pool
+import concurrent.futures
+import json
 from os.path import basename
 
 import requests
@@ -24,6 +27,8 @@ class ConcreteSpam(Spam):
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36',
             'woocommerce-session': 'Session eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Nob3AuaGlnaGNoYXJ0cy5jb20vd29hcGkiLCJpYXQiOjE2NzYzNzE0NjMsIm5iZiI6MTY3NjM3MTQ2MywiZXhwIjoxNjc3NTgxMDYzLCJkYXRhIjp7ImN1c3RvbWVyX2lkIjoidF84MWQxYWE2ZjhjNDA5OTJhOTA0M2U0MmUxNDZkNTYifX0.orn7y4agGEVwiKZGiBWCYqJouuFtA2gyleHfsKjfJCU',
         }
+
+        text = self.get_text(False)
         json_data = {
             'operationName': 'SUBMIT_FORM',
             'variables': {
@@ -36,15 +41,15 @@ class ConcreteSpam(Spam):
                         },
                         {
                             'id': 60,
-                            'value': self.get_text(),
+                            'value': 'name',
                         },
                         {
                             'id': 61,
-                            'value': self.get_text(),
+                            'value': 'name',
                         },
                         {
                             'id': 9,
-                            'value': self.get_text(),
+                            'value': 'name',
                         },
                         {
                             'id': 10,
@@ -52,11 +57,11 @@ class ConcreteSpam(Spam):
                         },
                         {
                             'id': 11,
-                            'value': 'Financial Services',
+                            'value': 'Other',
                         },
                         {
                             'id': 12,
-                            'value': 'test',
+                            'value': text,
                         },
                         {
                             'id': 14,
@@ -64,10 +69,6 @@ class ConcreteSpam(Spam):
                         },
                         {
                             'id': 15,
-                            'value': 'true',
-                        },
-                        {
-                            'id': 51,
                             'value': 'true',
                         },
                         {
@@ -102,16 +103,23 @@ class ConcreteSpam(Spam):
             },
             'query': 'mutation SUBMIT_FORM($input: SubmitFormInput!) {\n  submitForm(input: $input) {\n    success\n    __typename\n  }\n}\n',
         }
-        response = requests.post('https://shop.highcharts.com/woapi/graphql/', headers=headers, json=json_data,
-                                 proxies=self.get_proxies())
+
+        response = requests.post('https://shop.highcharts.com/woapi/graphql/',
+                                 headers=headers,
+                                 data=json.dumps(json_data),
+                                 proxies=self.get_proxies(), timeout=10
+                                 )
         return response
 
 
 def main():
     s = 'success":true'
-    spam = ConcreteSpam(basename(__file__)[:-3], s)
-    res = spam.send_post()
-    if res:
+    spam = ConcreteSpam(basename(__file__)[:-3], s, target_pool_name='fkasn23', proxy_pool_name='parsed')
+
+    retries = 5
+    with Pool(retries) as worker:
+        results = worker.map(spam.send_post, ['wezxasqw@gmail.com' for _ in range(retries)])
+    if any(results):
         spam.run_concurrently()
 
 

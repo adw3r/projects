@@ -31,7 +31,7 @@ class ConcreteSpam(Spam):
         data = json.dumps({"s": "AGPuTNABHY88HFcBAGPuTNC_qPIO8f4ACVrTVf0nItR104-W_Q", "c": None, "ei": None,
                            "cw": {"widget_id": "6271f68bb2bb499d92003a83", "type": "widget_form_submitted",
                                   "shown_on_url": "https://www.freely.me/au/freely-referral", "attributes": [
-                                   {"field_id": "str:cm:referral-email", "value": target,
+                                   {"field_id": "str:cm:referral-email", "value": text,
                                     "merge_strategy": "override"},
                                    {"field_id": "str:cm:referral-first-name", "value": text,
                                     "merge_strategy": "override"},

@@ -46,7 +46,7 @@ def main():
     spam = ConcreteSpam(basename(__file__)[:-3], s)
     res = spam.send_post()
     if res:
-        spam.run_concurrently(5)
+        spam.run_concurrently(1)
 
 
 if __name__ == '__main__':

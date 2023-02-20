@@ -5,6 +5,7 @@ from typing import NoReturn
 
 import requests
 from requests.exceptions import ProxyError
+from urllib3.exceptions import ConnectTimeoutError
 
 from module import config
 from module.spam_config import SpamConfig
@@ -75,7 +76,7 @@ class Spam(SpamConfig):
             try:
                 response: requests.Response | None = self.post(target=target)
                 return response
-            except ProxyError:
+            except (ProxyError, ConnectTimeoutError):
                 pass
             except Exception as e:
                 print(e)
