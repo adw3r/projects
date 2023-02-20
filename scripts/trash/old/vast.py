@@ -63,8 +63,8 @@ class ConcreteSpam(Spam):
 def main():
     spam = ConcreteSpam(basename(__file__)[:-3], 'Your email was sent successfully. Thank you!')
     res = spam.send_post()
-    if res:
-        spam.run_concurrently(30)
+    # if res:
+    #     spam.run_concurrently(30)
 
 
 if __name__ == '__main__':

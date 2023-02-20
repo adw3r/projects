@@ -174,8 +174,8 @@ class ConcreteSpam(Spam):
 def main():
     spam = ConcreteSpam(basename(__file__).removesuffix('.py'))
     res = spam.send_post('softumwork@gmail.com')
-    # if res:
-    #     spam.run_concurrently()
+    if res:
+        spam.run_concurrently()
 
 
 if __name__ == '__main__':

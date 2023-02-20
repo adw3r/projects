@@ -4,8 +4,8 @@ from time import sleep
 from typing import NoReturn
 
 import requests
-from requests.exceptions import ProxyError, ConnectTimeout, SSLError
-from urllib3.exceptions import ConnectTimeoutError
+from requests.exceptions import ProxyError, ConnectTimeout, SSLError, ReadTimeout, ConnectionError
+from urllib3.exceptions import ProtocolError
 
 from module import config
 from module.spam_config import SpamConfig
@@ -78,6 +78,8 @@ class Spam(SpamConfig):
                 return response
             except (ProxyError, ConnectTimeout, SSLError):
                 pass
+            except (ProtocolError, ReadTimeout, ConnectionError) as e:
+                print(e)
             except Exception as e:
                 self.logger.exception(e)
         return
