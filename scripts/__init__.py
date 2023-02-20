@@ -1,4 +1,4 @@
-from scripts.new import *
-from scripts.old import *
+from scripts.inbox import *
+from scripts.spam import *
 from scripts.trash import *
 from scripts.cap import *
