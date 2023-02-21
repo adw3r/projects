@@ -3,12 +3,13 @@ from os.path import basename
 
 import requests
 
+import module
 from module import Spam
 
 
 def get(session: requests.Session):
     headers = {
-        'authority': 'wonderpaws.wufoo.com',
+        'authority': 'louisvilleky.wufoo.com',
         'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
         'accept-language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
         'cache-control': 'max-age=0',
@@ -74,14 +75,15 @@ class ConcreteSpam(Spam):
             return
         text = self.get_text()
         post_resp = post(s, idstamp[0], text, target)
+        print(post_resp.text)
         return post_resp
 
 
 def main():
     spam = ConcreteSpam(basename(__file__).removesuffix('.py'), 'Your comments have been successfully submitted!')
-    res = spam.send_post()
-    if res:
-        spam.run_concurrently(60)
+    res = spam.send_post(f'wezxasqw+{module.generate_text()}@gmail.com')
+    # if res:
+    #     spam.run_concurrently(60)
 
 
 if __name__ == '__main__':
