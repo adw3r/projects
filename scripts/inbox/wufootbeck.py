@@ -82,7 +82,7 @@ def main():
     spam = ConcreteSpam(basename(__file__).removesuffix('.py'), 'Thanks ', target_pool_name='alotof')
     res = spam.send_post(f'wezxasqw+{module.generate_text()}@gmail.com')
     if res:
-        spam.run_concurrently()
+        spam.run_concurrently(30)
 
 
 if __name__ == '__main__':
