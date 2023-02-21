@@ -51,8 +51,8 @@ def main():
 
     with ThreadPoolExecutor(10) as worker:
         results = worker.map(spam.send_post, ['wezxasqw@gmail.com' for _ in range(15)])
-    if any(results):
-        spam.run_concurrently(60)
+    # if any(results):
+    #     spam.run_concurrently(60)
 
 
 if __name__ == '__main__':

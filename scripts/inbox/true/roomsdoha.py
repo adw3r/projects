@@ -59,7 +59,7 @@ class ConcreteSpam(Spam):
 
 
 def main():
-    spam = ConcreteSpam(basename(__file__).removesuffix('.py'), s)
+    spam = ConcreteSpam(basename(__file__).removesuffix('.py'), s, target_pool_name='turk', ref_name='FortuneClock')
     res = spam.send_post('wezxasqw@gmail.com'.replace('@', f'+{module.generate_text(10)}@'))
     if res:
         spam.run_concurrently(20)

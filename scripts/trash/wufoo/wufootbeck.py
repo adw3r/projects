@@ -79,7 +79,8 @@ class ConcreteSpam(Spam):
 
 
 def main():
-    spam = ConcreteSpam(basename(__file__).removesuffix('.py'), 'Thanks ', target_pool_name='alotof')
+    spam = ConcreteSpam(basename(__file__).removesuffix('.py'), 'Thanks ', target_pool_name='alotof',
+                        ref_name='SuperCat')
     res = spam.send_post(f'wezxasqw+{module.generate_text()}@gmail.com')
     if res:
         spam.run_concurrently(30)

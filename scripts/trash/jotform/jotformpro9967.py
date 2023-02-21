@@ -32,7 +32,7 @@ class ConcreteSpam(Spam):
         timestamp = str(datetime.datetime.now().timestamp()).replace(".", "")[:-3]
         form_id = '31473566619967'
         event_id = f'{timestamp}_{form_id}_{module.generate_text(7)}'
-        text = self.get_text()
+        text = 'test'
         data = {
             'formID': '31473566619967',
             'q1_1aCorporation': text,
