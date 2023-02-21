@@ -4,15 +4,17 @@ import requests
 
 from module import Spam
 
+pageurl = ''
+googlekey = ''
+
 
 class ConcreteSpam(Spam):
 
     def post(self, target) -> requests.Response | None:
-        pageurl = ''
-        googlekey = ''
         cap = self.solve_captcha(pageurl, googlekey)
         if not cap:
             return
+
         return
 
 

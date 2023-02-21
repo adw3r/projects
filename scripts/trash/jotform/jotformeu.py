@@ -48,7 +48,6 @@ class ConcreteSpam(Spam):
             'website': '',
             'simple_spc': '70802650701952-70802650701952',
             'event_id': f'{module.generate_text(13, digits)}_70802650701952_{module.generate_text(7)}',
-            # 1676909260594_{formID}_VgWw7id
             'validatedRequiredFieldIDs': '{"id_3":true,"id_4":true,"id_5":true,"id_6":true,"id_10":true}',
         }
 
