@@ -54,8 +54,8 @@ def main():
     s = '"isSuccess":true'
     spam = ConcreteSpam(basename(__file__)[:-3], s, target_pool_name='turk')
     res = spam.send_post(f'wezxasqw+{module.generate_text(10)}@gmail.com')
-    if res:
-        spam.run_concurrently(15)
+    # if res:
+    #     spam.run_concurrently(15)
 
 
 if __name__ == '__main__':

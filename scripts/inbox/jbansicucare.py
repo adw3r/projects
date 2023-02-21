@@ -20,7 +20,7 @@ class ConcreteSpam(module.Spam):
             'User-Agent': Faker().chrome(),
         }
 
-        text = 'test request'
+        text = self.get_text()
         data = {
             'name': 'name',
             'email': target,

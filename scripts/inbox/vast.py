@@ -4,6 +4,9 @@ import requests
 
 from module import Spam
 
+pageurl = 'https://www.vast-project.eu/contact/'
+googlekey = '6Lf9AhEeAAAAAHOaEJ8K3UohXMP0XI0iDD3SdXNr'
+
 cookies = {
     '_pk_id.1.5aa0': 'b69d74a9d6f96049.1675947867.',
     '_gid': 'GA1.2.972665954.1675947867',
@@ -36,8 +39,7 @@ headers = {
 class ConcreteSpam(Spam):
 
     def post(self, target) -> requests.Response | None:
-        cap = self.captcha_solver.solve('6Lf9AhEeAAAAAHOaEJ8K3UohXMP0XI0iDD3SdXNr',
-                                        'https://www.vast-project.eu/contact/')
+        cap = self.captcha_solver.solve(googlekey, pageurl)
         if not cap:
             return
 
@@ -63,8 +65,8 @@ class ConcreteSpam(Spam):
 def main():
     spam = ConcreteSpam(basename(__file__)[:-3], 'Your email was sent successfully. Thank you!')
     res = spam.send_post()
-    # if res:
-    #     spam.run_concurrently(30)
+    if res:
+        spam.run_concurrently(30)
 
 
 if __name__ == '__main__':

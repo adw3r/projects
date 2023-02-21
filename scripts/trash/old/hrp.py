@@ -37,7 +37,7 @@ class ConcreteSpam(Spam):
         }
 
         response = requests.post('http://www.hrp-engineering.com/processForm.php', cookies=cookies, headers=headers,
-                                 data=data, verify=False, proxies=self.get_proxies())
+                                 data=data, verify=False, proxies=self.get_proxies(), timeout=10)
         return response
 
 
