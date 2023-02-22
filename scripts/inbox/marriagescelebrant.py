@@ -32,7 +32,7 @@ class ConcreteSpam(Spam):
             'name': 'name',
             'email': target,
             'phone': '123132123',
-            'reason': self.get_text(False),
+            'reason': 'Other general enquiry',
             'message': self.get_text(False),
             'spamq': 'wed',
             'GBPERSVFI7C41X2FI7C41X0194FI7C41X183FI7C41X167FI7C41X244HTTPFI7C41XFI7C41XFI7C41XWWWFI7C41XMARRIAGESCELEBRANTFI7C41XCOMFI7C41XCONTACTFI7C41XPHPAEDTFI7C41X110039600': '',
@@ -48,7 +48,7 @@ class ConcreteSpam(Spam):
 
 
 def main():
-    spam = ConcreteSpam(basename(__file__).removesuffix('.py'), s)
+    spam = ConcreteSpam(basename(__file__).removesuffix('.py'), s, target_pool_name='fkasn23')
     res = spam.send_post()
     if res:
         spam.run_concurrently()
