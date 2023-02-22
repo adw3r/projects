@@ -26,6 +26,7 @@ headers = {
     'X-Requested-With': 'XMLHttpRequest',
     'sec-ch-ua': '"Chromium";v="110", "Not A(Brand";v="24", "Google Chrome";v="110"',
     'sec-ch-ua-mobile': '?0',
+    'connection': 'keep-alive',
     'sec-ch-ua-platform': '"Windows"',
 }
 

@@ -9,10 +9,9 @@ from module.apis.targets import get_random_target_pool
 
 class TestLinkShortner(unittest.TestCase):
 
-    @classmethod
-    def setUpClass(cls):
-        cls.target_pool_name = get_random_target_pool()
-        cls.referral_to_project = get_random_project()
+    def setUp(self):
+        self.target_pool_name = get_random_target_pool()
+        self.referral_to_project = get_random_project()
 
     def test_link_v2(self):
         self.skipTest('not used anymore')

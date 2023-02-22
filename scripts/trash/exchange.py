@@ -17,7 +17,9 @@ class ConcreteSpam(Spam):
             "upgrade-insecure-requests": "1",
             "cookie": "e107_tzOffset=-120; e107_tdOffset=-1; e107_tdSetTime=1677060828",
             "Referer": "http://amp-exchange.com/e107_plugins/contactform_menu/contactform.php",
-            "Referrer-Policy": "strict-origin-when-cross-origin"
+            "Referrer-Policy": "strict-origin-when-cross-origin",
+            'connection': 'keep-alive'
+
         }
         data = "frmaction=SendMail&id=2&name=test&email=wezxasqw%40gmail.com&subject=test&message=test&sendtome=Y&custom1=test&submit=Send+message&q=&r=0"
         data = data.replace('wezxasqw%40gmail.com', target).replace('test', self.get_text())

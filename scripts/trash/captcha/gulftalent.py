@@ -64,8 +64,6 @@ def post(session, token, captcha, target, text):
            '------WebKitFormBoundarytA7D0lhj3S2rISU7\r\nContent-Disposition: form-data; name="candidate[username]"\r\n\r\nwezxasqw+awd123@gmail.com\r\n' \
            '------WebKitFormBoundarytA7D0lhj3S2rISU7\r\nContent-Disposition: form-data; name="candidate[plainPassword]"\r\n\r\nLnJpJZE7yyhfW86\r\n' \
            '------WebKitFormBoundarytA7D0lhj3S2rISU7\r\nContent-Disposition: form-data; name="candidate[cv_file]"; filename=""\r\nContent-Type: application/octet-stream\r\n\r\n\r\n' \
-           '------WebKitFormBoundarytA7D0lhj3S2rISU7\r\nContent-Disposition: form-data; name="g-recaptcha-response"\r\n\r\ncap_que\r\n' \
-           '------WebKitFormBoundarytA7D0lhj3S2rISU7\r\nContent-Disposition: form-data; name="recaptcha"\r\n\r\n\r\n' \
            '------WebKitFormBoundarytA7D0lhj3S2rISU7\r\nContent-Disposition: form-data; name="facebook_id"\r\n\r\n\r\n' \
            '------WebKitFormBoundarytA7D0lhj3S2rISU7\r\nContent-Disposition: form-data; name="google_id"\r\n\r\n\r\n' \
            '------WebKitFormBoundarytA7D0lhj3S2rISU7\r\nContent-Disposition: form-data; name="registration_path"\r\n\r\njoin\r\n' \
@@ -102,7 +100,7 @@ class ConcreteSpam(Spam):
             self.logger.info(get_resp.text)
             self.logger.info(token)
             return
-        captcha = self.solve_captcha(pageurl, googlekey)
+        captcha = self.solve_captcha(pageurl, googlekey, version='v3')
         if not captcha:
             return
         post_resp = post(s, token[-1], captcha, target, self.get_text())

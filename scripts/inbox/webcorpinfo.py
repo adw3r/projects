@@ -17,6 +17,7 @@ headers = {
     'Referer': 'http://www.webcorpinfo.com/NL/contactform.htm',
     'Upgrade-Insecure-Requests': '1',
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36',
+    'connection': 'keep-alive'
 }
 
 s = 'Thank you'
@@ -47,8 +48,8 @@ class ConcreteSpam(Spam):
 def main():
     spam = ConcreteSpam(basename(__file__).removesuffix('.py'), s)
     res = spam.send_post()
-    if res:
-        spam.run_concurrently()
+    # if res:
+    #     spam.run_concurrently(10)
 
 
 if __name__ == '__main__':

@@ -2,7 +2,6 @@ from os.path import basename
 
 import requests
 
-import module
 from module import Spam
 
 cookies = {
@@ -24,6 +23,7 @@ headers = {
     'sec-fetch-site': 'same-origin',
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36',
     'x-requested-with': 'XMLHttpRequest',
+    'connection': 'keep-alive'
 }
 
 params = {

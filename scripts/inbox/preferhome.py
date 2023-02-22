@@ -13,6 +13,8 @@ class ConcreteSpam(module.Spam):
     def post(self, target) -> requests.Response:
         headers = {
             'user-agent': faker.Faker().chrome(),
+            'connection': 'keep-alive'
+
         }
         text = self.get_text(target=target)
         data = {
