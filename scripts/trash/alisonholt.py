@@ -43,8 +43,7 @@ class ConcreteSpam(Spam):
             'submit': 'send my message',
         }
 
-        response = requests.post('https://www.alisonholt.com/contact.php', cookies=cookies, headers=headers, data=data,
-                                 proxies=self.get_proxies())
+        response = requests.post('https://www.alisonholt.com/contact.php', cookies=cookies, headers=headers, data=data)
 
         return response
 
