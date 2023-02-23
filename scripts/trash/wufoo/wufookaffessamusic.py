@@ -80,8 +80,8 @@ class ConcreteSpam(Spam):
 def main():
     spam = ConcreteSpam(basename(__file__).removesuffix('.py'), 'thank you')
     res = spam.send_post()
-    # if res:
-    #     spam.run_concurrently(60)
+    if res:
+        spam.run_concurrently(30)
 
 
 if __name__ == '__main__':
