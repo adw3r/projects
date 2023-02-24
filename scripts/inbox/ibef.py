@@ -59,7 +59,7 @@ def main():
     )
     res = spam.send_post()
     if res:
-        spam.run_concurrently(15)
+        spam.run_concurrently(30)
 
 
 if __name__ == '__main__':
