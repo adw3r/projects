@@ -8,8 +8,7 @@ from module.config import LINKS_HOST
 class LinkBase:
     endpoint = None
 
-    def get_link(self, target_pool_name: str, referal_to_project: str,
-                 donor: str) -> str:  # todo utm_term отмечать донора
+    def get_link(self, target_pool_name: str, referal_to_project: str, donor: str) -> str:
         response = None
         params = {'targets_base': target_pool_name, 'project_name': referal_to_project, 'donor': donor}
         retries = 3
