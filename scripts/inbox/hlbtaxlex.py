@@ -16,7 +16,6 @@ headers = {
     'Accept-Language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
     'Cache-Control': 'no-cache',
     'Connection': 'keep-alive',
-    # 'Cookie': 'PHPSESSID=67dc13c8291b652bb3bacfcfad456d86; _ga=GA1.2.1884665157.1677578700; _gid=GA1.2.1558241747.1677578700; _gat=1',
     'Origin': 'https://www.hlbtaxlex.com',
     'Pragma': 'no-cache',
     'Referer': 'https://www.hlbtaxlex.com/contact-us/',
@@ -60,8 +59,8 @@ def main():
     s = 'succesfully'
     spam = ConcreteSpam(basename(__file__).removesuffix('.py'), s)
     res = spam.send_post()
-    if res:
-        spam.run_concurrently(1)
+    # if res:
+    #     spam.run_concurrently(1)
 
 
 if __name__ == '__main__':
