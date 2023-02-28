@@ -1,3 +1,9 @@
+from os.path import basename
+
+import requests
+
+from module import Spam
+
 cookies = {
     'PHPSESSID': '7pi1mqiv4cb4ddl53i865gusm6',
     'comm100_visitorguid_155184': '1cdc0bb3-4224-4ead-97c6-8e671b9142e3',
@@ -14,12 +20,6 @@ headers = {
     'Upgrade-Insecure-Requests': '1',
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36',
 }
-
-from os.path import basename
-
-import requests
-
-from module import Spam
 
 
 class ConcreteSpam(Spam):

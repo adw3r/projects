@@ -77,7 +77,7 @@ class SpamConfig:
         self.ref_name: str = ref_name if ref_name else get_random_project()
         self.proxy_pool_name: str = proxy_pool_name if proxy_pool_name else PROXIES
         self.target_pool_name: str = target_pool_name if target_pool_name else get_random_target_pool()
-        self.promo_link: str = LINK.get_link(self.target_pool_name, self.ref_name)
+        self.promo_link: str = LINK.get_link(self.target_pool_name, self.ref_name, self.project_name)
         self.lang: str = TargetServerPool.get_targets_json().get(self.target_pool_name).get('lang')
         self.text: str = Text.get_texts_from_api().get(self.lang)
         self.spins: str = referrals.get_referrals_json().get(self.ref_name).get('spins')
