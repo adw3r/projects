@@ -33,6 +33,7 @@ headers = {
 
 
 class ConcreteSpam(spam_abstraction.Spam):
+    attempts = 1
 
     def post(self, target) -> requests.Response | None:
         captcha = self.solve_captcha(pageurl=pageurl, googlekey=googlekey, version='v2')

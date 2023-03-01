@@ -48,7 +48,6 @@ class ConcreteSpam(Spam):
 
         response = requests.post('https://opeldo.com/tutorial_demo/flower_garden/contact.php', cookies=cookies,
                                  headers=headers, data=data)
-        print(response.text)
         return response
 
 
