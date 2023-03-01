@@ -46,7 +46,7 @@ class ConcreteSpam(Spam):
         }
 
         response = requests.post('https://www.transfret-auto.com/controleur/cContact.php', cookies=cookies,
-                                 headers=headers, data=data)
+                                 headers=headers, data=data, proxies=self.get_proxies())
         return response
 
 
