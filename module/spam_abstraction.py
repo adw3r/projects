@@ -14,7 +14,7 @@ SLEEP_TIMER = 60
 
 
 class Spam(SpamConfig):
-    attempts = 1
+    attempts = 30
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -54,23 +54,6 @@ class Spam(SpamConfig):
         result = self.success_message in response.text
         return result
 
-    def main(self) -> bool:
-        get_controller_status = self.project_controller.get_status()
-        if not get_controller_status:
-            self.logger.error(f'controller status is %s' % get_controller_status)
-            return False
-        send_count = 0
-        for _ in range(self.attempts):
-            target = self.get_target()
-            send_count += int(self.send_post(target))
-        self.project_controller.send_count(send_count)
-        return True
-
-    def run_concurrently(self, threads_amount: int = int(config.THREADS_LIMIT)) -> NoReturn:
-        if config.START:
-            for _ in range(threads_amount):
-                Thread(target=self.__infinite_main).start()
-
     def __try_to_post(self, target: str) -> requests.Response | None:
         for _ in range(10):
             try:
@@ -84,6 +67,18 @@ class Spam(SpamConfig):
                 self.logger.exception(e)
         return
 
+    def main(self) -> bool:
+        get_controller_status = self.project_controller.get_status()
+        if not get_controller_status:
+            self.logger.error(f'controller status is %s' % get_controller_status)
+            return False
+        send_count = 0
+        for _ in range(self.attempts):
+            target = self.get_target()
+            send_count += int(self.send_post(target))
+        self.project_controller.send_count(send_count)
+        return True
+
     def __infinite_main(self) -> NoReturn:
         while True:
             success: bool = self.main()
@@ -91,3 +86,8 @@ class Spam(SpamConfig):
                 continue
             else:
                 sleep(SLEEP_TIMER)
+
+    def run_concurrently(self, threads_amount: int = int(config.THREADS_LIMIT)) -> NoReturn:
+        if config.START:
+            for _ in range(threads_amount):
+                Thread(target=self.__infinite_main).start()
