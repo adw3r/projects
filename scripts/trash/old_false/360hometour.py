@@ -36,7 +36,7 @@ headers = {
 class ConcreteSpam(Spam):
 
     def post(self, target) -> requests.Response | None:
-        text = self.get_text(target=target)
+        text = self.get_text()
         params = {
             'name': text,
             'email': target,
