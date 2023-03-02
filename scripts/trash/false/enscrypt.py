@@ -1,3 +1,9 @@
+from os.path import basename
+
+import requests
+
+from module import Spam
+
 cookies = {
     'PHPSESSID': 'a3ptrfoc69p8m4fkfhqd709ovo',
     'sc_is_visitor_unique': 'rx12652747.1677576692.C7D8409CDB094FC5EDB94C84FAB2F543.1.1.1.1.1.1.1.1.1-12720744.1677508888.3.3.3.3.3.3.3.3.3',
@@ -23,12 +29,6 @@ headers = {
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
 }
-
-from os.path import basename
-
-import requests
-
-from module import Spam
 
 
 class ConcreteSpam(Spam):
