@@ -9,7 +9,7 @@ def spam():
     for file in globals()[SCRIPTS_FOLDER].__all__:
         process = Process(target=globals()[file].main)
         process.start()
-        sleep(.5)
+        sleep(.05)
 
 
 if __name__ == '__main__':

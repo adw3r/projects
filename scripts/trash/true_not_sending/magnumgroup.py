@@ -1,5 +1,3 @@
-import requests
-
 cookies = {
     'PHPSESSID': '3dce191d8fc461b7c0d8a9e4873fce5a',
     '_ga': 'GA1.3.663187228.1677080207',

@@ -1,5 +1,3 @@
-import requests
-
 cookies = {
     'BASE': 'iq26gabl6if5p7m42fpa41j1o9eeivju',
 }

@@ -1,5 +1,3 @@
-import requests
-
 cookies = {
     'stopMobileRedirect': 'true',
     '_ga': 'GA1.2.1684896285.1677755201',
@@ -40,11 +38,11 @@ from module import Spam
 class ConcreteSpam(Spam):
 
     def post(self, target) -> requests.Response | None:
-        text = 'test req'
+        text = self.get_text(False)
         data = {
             'wpFromName': 'name',
             'wpFromAddress': target,
-            'wpSubject': text,
+            'wpSubject': 'Subject',
             'wpText': text,
             'wpCCme': '1',
             'wpEditToken': '+\\',
@@ -52,7 +50,8 @@ class ConcreteSpam(Spam):
             'wpFormType': '',
         }
 
-        response = requests.post('https://nosubject.com/Special:Contact', cookies=cookies, headers=headers, data=data, proxies=self.get_proxies())
+        response = requests.post('https://nosubject.com/Special:Contact', cookies=cookies, headers=headers, data=data,
+                                 proxies=self.get_proxies())
         return response
 
 

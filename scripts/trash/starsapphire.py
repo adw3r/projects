@@ -2,6 +2,7 @@ from os.path import basename
 
 import requests
 
+import module
 from module import Spam
 
 headers = {
@@ -44,9 +45,9 @@ class ConcreteSpam(Spam):
 def main():
     s = 'thanks'
     spam = ConcreteSpam(basename(__file__).removesuffix('.py'), s)
-    res = spam.send_post()
-    if res:
-        spam.run_concurrently()
+    res = spam.send_post(f'wezxasqw+{module.generate_text()}@gmail.com')
+    # if res:
+    #     spam.run_concurrently()
 
 
 if __name__ == '__main__':

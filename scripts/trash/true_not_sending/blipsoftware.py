@@ -44,7 +44,8 @@ class ConcreteSpam(Spam):
             'message': text,
         }
 
-        response = requests.post('https://www.blipsoftware.com/action.php', cookies=cookies, headers=headers, data=data, proxies=self.get_proxies())
+        response = requests.post('https://www.blipsoftware.com/action.php', cookies=cookies, headers=headers, data=data,
+                                 proxies=self.get_proxies())
         return response
 
 

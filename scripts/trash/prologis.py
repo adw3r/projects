@@ -1,5 +1,3 @@
-import requests
-
 from os.path import basename
 
 import requests

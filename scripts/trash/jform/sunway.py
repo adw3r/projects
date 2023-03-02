@@ -3,7 +3,6 @@ from os.path import basename
 import requests
 
 from module import Spam
-import requests
 
 cookies = {
     'f3921aef6a5c0fe9e9ce2ebcf0adbfba': 'df1on8e9028pf1bg0ocarpbbg5',

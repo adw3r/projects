@@ -1,5 +1,5 @@
-from concurrent.futures import ThreadPoolExecutor
 import datetime
+from concurrent.futures import ThreadPoolExecutor
 from os.path import basename
 
 import requests

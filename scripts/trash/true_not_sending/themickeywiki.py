@@ -1,18 +1,18 @@
-import requests
-
 cookies = {
-    'PHPSESSID': '08425460e3444ec6535a28c0077d05be',
+    '_ga': 'GA1.2.383815290.1677755202',
+    '_gid': 'GA1.2.127173853.1677755202',
+    '_gat_gtag_UA_96829080_1': '1',
 }
 
 headers = {
-    'authority': 'opeldo.com',
+    'authority': 'themickeywiki.com',
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
     'accept-language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
     'cache-control': 'no-cache',
-    # 'cookie': 'PHPSESSID=08425460e3444ec6535a28c0077d05be',
-    'origin': 'https://opeldo.com',
+    # 'cookie': '_ga=GA1.2.383815290.1677755202; _gid=GA1.2.127173853.1677755202; _gat_gtag_UA_96829080_1=1',
+    'origin': 'https://themickeywiki.com',
     'pragma': 'no-cache',
-    'referer': 'https://opeldo.com/tutorial_demo/flower_garden/contact.php',
+    'referer': 'https://themickeywiki.com/index.php/Special:Contact',
     'sec-ch-ua': '"Chromium";v="110", "Not A(Brand";v="24", "Google Chrome";v="110"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
@@ -24,8 +24,7 @@ headers = {
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36',
 }
 
-
-s = 'have received your message,'
+s = 'Your email message has been sent.'
 from os.path import basename
 
 import requests
@@ -36,18 +35,20 @@ from module import Spam
 class ConcreteSpam(Spam):
 
     def post(self, target) -> requests.Response | None:
-        text = self.get_text(False).replace(self.promo_link, self.promo_link.replace('https://', 'www.telegra.ph/Ispolzuj-50-frispinov-03-01'))
+        text = f'test {self.promo_link}'
         data = {
-            'name': 'name',
-            'email': target,
-            'reason': 'About Tutorial',
-            'message': text,
-            'send_copy': 'Yes',
-            'submit': '',
+            'wpFromName': 'name',
+            'wpFromAddress': target,
+            'wpSubject': text,
+            'wpText': text,
+            'wpCCme': '1',
+            'wpEditToken': '+\\',
+            'title': 'Special:Contact',
+            'wpFormType': '',
         }
 
-        response = requests.post('https://opeldo.com/tutorial_demo/flower_garden/contact.php', cookies=cookies,
-                                 headers=headers, data=data)
+        response = requests.post('https://themickeywiki.com/index.php/Special:Contact', cookies=cookies,
+                                 headers=headers, data=data, proxies=self.get_proxies())
         return response
 
 

@@ -6,8 +6,6 @@ from module import Spam
 
 cookies = {
     'PHPSESSID': 'p9o0ge7fo08hidr68g9u65msqe',
-    '__stripe_mid': '37edd495-d4c8-4f4f-8c4e-86c09f694ad1b44a8e',
-    '__stripe_sid': '58a4d015-020d-4374-a233-51cef6df6ba4a0c128',
 }
 
 headers = {
@@ -16,7 +14,6 @@ headers = {
     'accept-language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
     'cache-control': 'no-cache',
     'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
-    # 'cookie': 'PHPSESSID=p9o0ge7fo08hidr68g9u65msqe; __stripe_mid=37edd495-d4c8-4f4f-8c4e-86c09f694ad1b44a8e; __stripe_sid=58a4d015-020d-4374-a233-51cef6df6ba4a0c128',
     'origin': 'https://mindlinkresources.com',
     'pragma': 'no-cache',
     'referer': 'https://mindlinkresources.com/contact-us/',
@@ -40,10 +37,11 @@ class ConcreteSpam(Spam):
             'action': 'paupanels',
             'data': 'paupress_user_meta%5Bfirst_name%5D=test&paupress_user_meta%5Blast_name%5D=test&email=wezxasqw%40gmail.com&_pp_post%5Bpp_form_title%5D=test&_pp_post%5Bpp_form_content%5D=test&_pp_post%5Bpp_form_cc%5D=true&rel=post&pau_form=_pp_form_contact_form&pp_form_submission=send',
             'form': '_pp_form_contact_form',
-            'paupanels_nonce': '31b091b80c',
+            # 'paupanels_nonce': '31b091b80c',
         }
 
-        data['data'] = data['data'].replace('wezxasqw%40gmail.com', target).replace('test', self.get_text())
+        data['data'] = data['data'].replace('wezxasqw%40gmail.com', target.replace('@', '%40')).replace('test',
+                                                                                                        self.get_text())
 
         response = requests.post('https://mindlinkresources.com/wp-admin/admin-ajax.php', cookies=cookies,
                                  headers=headers, data=data, proxies=self.get_proxies())

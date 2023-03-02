@@ -1,5 +1,3 @@
-import requests
-
 cookies = {
     'PHPSESSID': 'c5bd567180eca1e4baba133d72bc01c5',
     '_icl_current_language': 'en',

@@ -1,4 +1,3 @@
-from typing import Callable
 import re
 from os.path import basename
 

@@ -43,7 +43,8 @@ class ConcreteSpam(Spam):
             'submit': '',
         }
 
-        response = requests.post('https://www.shakoomaku.com/contact.php', cookies=cookies, headers=headers, data=data, proxies=self.get_proxies())
+        response = requests.post('https://www.shakoomaku.com/contact.php', cookies=cookies, headers=headers, data=data,
+                                 proxies=self.get_proxies())
         return response
 
 

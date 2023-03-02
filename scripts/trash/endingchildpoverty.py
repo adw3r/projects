@@ -3,7 +3,6 @@ from os.path import basename
 import requests
 
 from module import Spam
-import requests
 
 cookies = {
     '_gcl_au': '1.1.324156097.1677577008',

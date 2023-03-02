@@ -1,5 +1,3 @@
-import requests
-
 cookies = {
     '_gid': 'GA1.2.1670688505.1677143926',
     '__wpdm_client': 'b90a60f3a0a54deed38266d0f292d7ef',
