@@ -38,6 +38,7 @@ TEXTS_HOST = config['general']['TEXTS_HOST']
 LINKS_HOST = config['general']['LINKS_HOST']
 REFERRALS_HOST = config['general']['REFERRALS_HOST']
 LOGGING_LEVEL = config['general'].getint('LOGGING_LEVEL')
+DEFAULT_PROXIES = config['general']['DEFAULT_PROXIES']
 
 CAPMONSTER_HOST = os.environ.get('CAPMONSTER_HOST')
 ZENNO_KEY = os.environ['ZENNO_KEY']

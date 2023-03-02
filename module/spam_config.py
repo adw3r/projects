@@ -9,7 +9,7 @@ from module.apis.proxies import ProxyServerPool
 from module.apis.referrals import get_random_project, Referrals
 from module.apis.targets import get_random_target_pool, TargetServerPool
 from module.apis.texts import Text
-from module.config import CONFIGS_FOLDER, PROXIES, LOGGING_LEVEL
+from module.config import CONFIGS_FOLDER, PROXIES, LOGGING_LEVEL, DEFAULT_PROXIES
 
 
 LINK = Link()
@@ -29,7 +29,7 @@ class SpamConfig:
     project_name: str
     success_message: str
     ref_name: str
-    proxy_pool_name: str
+    proxy_pool_name: str = DEFAULT_PROXIES
     target_pool_name: str
     promo_link: str
     lang: str
@@ -49,6 +49,13 @@ class SpamConfig:
                  ref_name: str = '',
                  proxy_pool_name: str = ''):
         self.project_name = project_name
+        self.success_message = success_message
+        if target_pool_name:
+            self.target_pool_name = target_pool_name
+        if proxy_pool_name:
+            self.proxy_pool_name = proxy_pool_name
+
+        self.ref_name = ref_name
         if self.__path_to_config.exists() and 'scratch' not in project_name:
             self.__load_config()
             self.__init_from_config()
@@ -113,7 +120,7 @@ class SpamConfig:
         self.lang = self.__config_file['lang']
         self.promo_link = self.__config_file['link']
         self.target_pool_name = self.__config_file['target_pool_name']
-        self.proxy_pool_name = self.__config_file['proxy_pool_name']
+        self.proxy_pool_name = self.__config_file['proxy_pool_name'] if not self.proxy_pool_name else DEFAULT_PROXIES
         self.ref_name = self.__config_file['ref_name']
 
     def __load_config(self):
