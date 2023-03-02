@@ -31,6 +31,9 @@ class ConcreteSpam(Spam):
         data = {
             'name': self.get_text(),
             'email': target,
+            'cc-email': target,
+            're-email': target,
+            'recipient': target,
             'mobile': '123123',
             'year': self.get_text(),
             'comments': self.get_text(),
@@ -51,7 +54,7 @@ def main():
     spam = ConcreteSpam(basename(__file__).removesuffix('.py'), 'processing_note')
     res = spam.send_post()
     if res:
-        spam.run_concurrently(30)
+        spam.run_concurrently(10)
 
 
 if __name__ == '__main__':

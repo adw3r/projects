@@ -7,6 +7,9 @@ from module import Spam
 
 class ConcreteSpam(Spam):
 
+    def check_success(self, response: requests.Response | None) -> bool:
+        return response.status_code < 500
+
     def post(self, target) -> requests.Response | None:
         cookies = {
             '__utma': '24449833.1850274489.1677663959.1677663959.1677663959.1',
@@ -51,7 +54,7 @@ def main():
     spam = ConcreteSpam(basename(__file__).removesuffix('.py'), s)
     res = spam.send_post()
     if res:
-        spam.run_concurrently()
+        spam.run_concurrently(15)
 
 
 if __name__ == '__main__':

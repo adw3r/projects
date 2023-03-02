@@ -39,7 +39,9 @@ class ConcreteSpam(Spam):
         data = {
             'name': self.get_text(),
             'email': target,
+            'recipient': target,
             'Bcc': target,
+            'Cc': target,
             'id_institution': '36',
             'priority': 'Low',
             'copy_email': 'on',
