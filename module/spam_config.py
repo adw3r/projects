@@ -4,7 +4,7 @@ from pathlib import Path
 
 from module.apis.captcha_solvers import CapMonsterSolver
 from module.apis.links import Link
-from module.apis.project_controller import ProjectControllerOnRedis, ProjectController
+from module.apis.project_controller import ProjectControllerOnRedis, ProjectController, ProjectServerController
 from module.apis.proxies import ProxyServerPool
 from module.apis.referrals import get_random_project, Referrals
 from module.apis.targets import get_random_target_pool, TargetServerPool
@@ -66,7 +66,7 @@ class SpamConfig:
         self.text_instance = Text(self.lang, self.promo_link, self.ref_name, self.text, self.spins)
         self.proxy_instance = ProxyServerPool(self.proxy_pool_name)
         self.target_instance = TargetServerPool(self.target_pool_name)
-        self.project_controller = ProjectControllerOnRedis(
+        self.project_controller = ProjectServerController(
             name=self.project_name,
             project_name=self.ref_name,
             prom_link=self.promo_link,

@@ -1,5 +1,3 @@
-import requests
-
 cookies = {
     '__utma': '106952476.367495367.1677760737.1677760737.1677760737.1',
     '__utmc': '106952476',
@@ -27,7 +25,6 @@ headers = {
     'upgrade-insecure-requests': '1',
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36',
 }
-
 
 s = 'Many thanks '
 from os.path import basename

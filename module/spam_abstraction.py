@@ -59,10 +59,8 @@ class Spam(SpamConfig):
             try:
                 response: requests.Response | None = self.post(target=target)
                 return response
-            except (ProxyError, ConnectTimeout, SSLError):
+            except (ProxyError, ConnectTimeout, SSLError, ProtocolError, ReadTimeout, ConnectionError):
                 pass
-            except (ProtocolError, ReadTimeout, ConnectionError) as e:
-                print(e)
             except Exception as e:
                 self.logger.exception(e)
         return

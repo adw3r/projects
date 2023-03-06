@@ -1,7 +1,3 @@
-import requests
-
-import module.config
-
 cookies = {
     'PHPSESSID': 'h874df5sbuvihok07lf9r610d0',
     '__utma': '46946234.89919484.1677763116.1677763116.1677763116.1',

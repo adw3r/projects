@@ -80,8 +80,8 @@ def main():
     s = 'Thank you! An email has been sent to your friend.'
     spam = ConcreteSpam(basename(__file__).removesuffix('.py'), s)
     res = spam.send_post()
-    # if res:
-    #     spam.run_concurrently()
+    if res:
+        spam.run_concurrently()
 
 
 if __name__ == '__main__':

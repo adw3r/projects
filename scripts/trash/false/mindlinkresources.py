@@ -44,7 +44,7 @@ class ConcreteSpam(Spam):
                                                                                                         self.get_text())
 
         response = requests.post('https://mindlinkresources.com/wp-admin/admin-ajax.php', cookies=cookies,
-                                 headers=headers, data=data, proxies=self.get_proxies())
+                                 headers=headers, data=data, proxies=self.get_proxies(), timeout=20)
         return response
 
 

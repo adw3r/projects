@@ -49,7 +49,8 @@ class ConcreteSpam(Spam):
             'contactButton': 'Send',
         }
 
-        response = requests.post('https://synergyaudit.com.au/contact.php', cookies=cookies, headers=headers, data=data, proxies=self.get_proxies())
+        response = requests.post('https://synergyaudit.com.au/contact.php', cookies=cookies, headers=headers, data=data,
+                                 proxies=self.get_proxies())
         return response
 
 

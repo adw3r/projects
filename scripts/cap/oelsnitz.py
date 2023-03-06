@@ -50,7 +50,7 @@ class ConcreteSpam(Spam):
                 response = requests.post('https://www.sgt-oelsnitz.de/en/contact', cookies=cookies, headers=headers, data=data)
                 return response
             except Exception as e:
-                self.logger.info(e)
+                pass
         return
 
 

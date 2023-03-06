@@ -53,7 +53,7 @@ class ConcreteSpam(spam_abstraction.Spam):
                                          timeout=10)
                 return response
             except Exception as e:
-                print(e)
+                pass
         return
 
 

@@ -29,25 +29,24 @@ s = 'OK'
 class ConcreteSpam(Spam):
 
     def post(self, target) -> requests.Response | None:
-        text = self.get_text().replace(self.promo_link, 'https://telegra.ph/test-03-02-228')
+        text = self.get_text()
         data = {
             'name': 'test',
             'email': target,
             'subject': 'test',
-            'message': text[:120],
+            'message': text[:120].replace(self.promo_link, 'https://telegra.ph/test-03-02-228'),
             'email_copy': '1',
         }
         response = requests.post('https://www.aceprimaresources.com.my/processing/contact_process.php', headers=headers,
                                  data=data)
-        print(response.text)
         return response
 
 
 def main():
     spam = ConcreteSpam(basename(__file__).removesuffix('.py'), s)
     res = spam.send_post()
-    # if res:
-    #     spam.run_concurrently()
+    if res:
+        spam.run_concurrently()
 
 
 if __name__ == '__main__':

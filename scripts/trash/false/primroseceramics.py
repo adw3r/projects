@@ -1,5 +1,3 @@
-import requests
-
 headers = {
     'authority': 'primroseceramics.co.uk',
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
@@ -41,7 +39,8 @@ class ConcreteSpam(Spam):
             'BccSelf': '1',
         }
 
-        response = requests.post('https://primroseceramics.co.uk/contact.php', headers=headers, data=data, proxies=self.get_proxies())
+        response = requests.post('https://primroseceramics.co.uk/contact.php', headers=headers, data=data,
+                                 proxies=self.get_proxies())
         return response
 
 

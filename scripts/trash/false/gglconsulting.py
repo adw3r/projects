@@ -1,5 +1,3 @@
-import requests
-
 cookies = {
     'PHPSESSID': '84hesar75tp74qr1o2sk08ktdt',
 }
@@ -43,7 +41,8 @@ class ConcreteSpam(Spam):
             'send_copy': 'on',
         }
 
-        response = requests.post('https://gglconsulting.net/contact.php', cookies=cookies, headers=headers, data=data, proxies=self.get_proxies())
+        response = requests.post('https://gglconsulting.net/contact.php', cookies=cookies, headers=headers, data=data,
+                                 proxies=self.get_proxies())
         return response
 
 

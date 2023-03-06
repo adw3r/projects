@@ -47,7 +47,9 @@ class ConcreteSpam(module.Spam):
         }
 
         response = requests.post('https://www.ibef.org/forward-to-a-friend/submission', cookies=cookies,
-                                 headers=headers, data=data, proxies=self.get_proxies(), timeout=10)
+                                 headers=headers, data=data,
+                                 # proxies=self.get_proxies(), timeout=20
+                                 )
         return response
 
 
@@ -59,7 +61,7 @@ def main():
     )
     res = spam.send_post()
     if res:
-        spam.run_concurrently(30)
+        spam.run_concurrently()
 
 
 if __name__ == '__main__':

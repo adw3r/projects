@@ -61,7 +61,7 @@ class ConcreteSpam(Spam):
             params=params,
             cookies=cookies,
             headers=headers,
-            json=json_data, proxies=self.get_proxies()
+            json=json_data, proxies=self.get_proxies(), timeout=20
         )
         return response
 
@@ -70,7 +70,7 @@ def main():
     spam = ConcreteSpam(basename(__file__).removesuffix('.py'), s)
     res = spam.send_post()
     if res:
-        spam.run_concurrently(15)
+        spam.run_concurrently(60)
 
 
 if __name__ == '__main__':

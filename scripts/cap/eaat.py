@@ -54,7 +54,7 @@ class ConcreteSpam(Spam):
 
                 return response
             except Exception as e:
-                self.logger.info(e)
+                pass
         return
 
 
