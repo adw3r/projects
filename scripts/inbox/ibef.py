@@ -48,7 +48,7 @@ class ConcreteSpam(module.Spam):
 
         response = requests.post('https://www.ibef.org/forward-to-a-friend/submission', cookies=cookies,
                                  headers=headers, data=data,
-                                 # proxies=self.get_proxies(), timeout=20
+                                 proxies=self.get_proxies(), timeout=20
                                  )
         return response
 

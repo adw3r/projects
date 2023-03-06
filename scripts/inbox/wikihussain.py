@@ -23,7 +23,6 @@ class ConcreteSpam(Spam):
             'Accept-Language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
             'Cache-Control': 'no-cache',
             'Connection': 'keep-alive',
-            # 'Cookie': '_gid=GA1.2.628328214.1678093169; wikh_share_db_wiki_mwuser-sessionId=80beed7dc55401cca9b7; _ga_DMBHXB1QVZ=GS1.1.1678093166.1.1.1678093681.0.0.0; _ga=GA1.2.398774296.1678093167; _gat=1',
             'Origin': 'https://en.wikihussain.com',
             'Pragma': 'no-cache',
             'Referer': 'https://en.wikihussain.com/view/Special:Contact',

@@ -38,7 +38,7 @@ class ConcreteSpam(Spam):
             'submit': 'Send Message',
         }
 
-        response = requests.post('https://www.cortijovadillo.com/contact.html', headers=headers, data=data)
+        response = requests.post('https://www.cortijovadillo.com/contact.html', headers=headers, data=data, proxies=self.get_proxies(), timeout=20)
         return response
 
 
