@@ -47,7 +47,7 @@ class ConcreteSpam(Spam):
         data = data.replace('test', self.get_text()).encode()
 
         response = requests.post('https://jamvans.co.uk/wp-admin/admin-ajax.php', cookies=cookies, headers=headers,
-                                 data=data)
+                                 data=data, proxies=self.get_proxies(), timeout=20)
         return response
 
 
