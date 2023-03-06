@@ -61,7 +61,7 @@ class ConcreteSpam(Spam):
             params=params,
             cookies=cookies,
             headers=headers,
-            json=json_data, proxies=self.get_proxies(), timeout=20
+            # json=json_data, proxies=self.get_proxies(), timeout=20
         )
         return response
 

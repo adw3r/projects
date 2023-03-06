@@ -50,7 +50,9 @@ class ConcreteSpam(Spam):
         }
 
         response = requests.post('https://www.thethirdturn.com/wiki/Special:Contact', cookies=cookies, headers=headers,
-                                 data=data, proxies=self.get_proxies(), timeout=20)
+                                 data=data,
+                                 proxies=self.get_proxies(), timeout=20
+                                 )
         return response
 
 
