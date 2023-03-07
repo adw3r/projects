@@ -47,10 +47,10 @@ class ConcreteSpam(Spam):
         data = data.replace('test', self.get_text()).encode()
         for _ in range(10):
             try:
-                response = requests.post('https://www.sgt-oelsnitz.de/en/contact', cookies=cookies, headers=headers, data=data)
+                response = requests.post('https://www.sgt-oelsnitz.de/en/contact', cookies=cookies, headers=headers, data=data, proxies=self.get_proxies())
                 return response
             except Exception as e:
-                pass
+                print(e)
         return
 
 

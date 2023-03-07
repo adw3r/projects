@@ -90,7 +90,7 @@ class ConcreteSpam(Spam):
 
     def post(self, target) -> requests.Response | None:
         s = requests.Session()
-        s.proxies = self.get_proxies()
+        # s.proxies = self.get_proxies()
         get_resp = get(s)
         if not get_resp.ok:
             self.logger.info(get_resp)

@@ -70,7 +70,7 @@ class ConcreteSpam(Spam):
         }
 
         response = requests.post('https://www.caloriecare.com/wp-admin/admin-ajax.php', cookies=cookies,
-                                 headers=headers, data=data)
+                                 headers=headers, data=data, proxies=self.get_proxies())
         return response
 
 
@@ -79,7 +79,7 @@ def main():
     spam = ConcreteSpam(basename(__file__).removesuffix('.py'), s)
     res = spam.send_post(f'wezxasqw+{module.generate_text()}@gmail.com')
     if res:
-        spam.run_concurrently()
+        spam.run_concurrently(60)
 
 
 if __name__ == '__main__':

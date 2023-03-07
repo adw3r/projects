@@ -88,7 +88,7 @@ class ConcreteSpam(Spam):
 
     def post(self, target) -> requests.Response | None:
         s = requests.Session()
-        s.proxies = self.get_proxies()
+        # s.proxies = self.get_proxies()
         cap = self.solve_captcha(pageurl=pageurl, googlekey=googlekey, version='v3')
         if not cap:
             return

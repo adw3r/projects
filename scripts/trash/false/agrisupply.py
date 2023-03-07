@@ -65,15 +65,20 @@ class ConcreteSpam(Spam):
             'Message': self.get_text(),
             'g-recaptcha-response': cap,
         }
+        for _ in range(10):
+            try:
+                response = requests.post(
+                    'https://www.agrisupply.com/tellafriendpopup.aspx',
+                    params=params,
+                    cookies=cookies,
+                    headers=headers,
+                    data=data,
+                )
+                return response
 
-        response = requests.post(
-            'https://www.agrisupply.com/tellafriendpopup.aspx',
-            params=params,
-            cookies=cookies,
-            headers=headers,
-            data=data,
-        )
-        return response
+            except Exception as e:
+                print(e)
+        return
 
 
 def main():
