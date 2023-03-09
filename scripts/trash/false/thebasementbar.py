@@ -30,7 +30,7 @@ s = 'Thank you.'
 class ConcreteSpam(Spam):
 
     def post(self, target) -> requests.Response | None:
-        text = 'test'
+        text = self.get_text()
         data = {
             'fromName': 'name',
             'fromEmail': target,

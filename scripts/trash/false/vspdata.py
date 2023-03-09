@@ -45,7 +45,8 @@ class ConcreteSpam(Spam):
             '_do': 'contactForm-submit',
         }
 
-        response = requests.post('https://services.vspdata.cz/de/contact/', cookies=cookies, headers=headers, data=data, proxies=self.get_proxies())
+        response = requests.post('https://services.vspdata.cz/de/contact/', cookies=cookies, headers=headers, data=data,
+                                 proxies=self.get_proxies())
         return response
 
 

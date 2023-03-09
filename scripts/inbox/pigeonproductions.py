@@ -38,11 +38,10 @@ class ConcreteSpam(Spam):
     def post(self, target) -> requests.Response | None:
         data = 'sendmessage=1&emailaddress=wezxasqw@gmail.com&message=test&fullname=test&sendcopy=true'
         data = data.replace('wezxasqw@gmail.com', target)
-        # data = data.replace('test', self.get_text())
+        data = data.replace('test', self.get_text())
 
         response = requests.post('https://www.pigeonproductions.pl/', cookies=cookies, headers=headers,
                                  data=data.encode())
-        print(response.text)
         return response
 
 

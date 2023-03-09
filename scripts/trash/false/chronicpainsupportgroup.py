@@ -51,6 +51,7 @@ class ConcreteSpam(Spam):
             headers=headers,
             data=data.encode(),
             verify=False,
+            proxies=self.get_proxies()
         )
         return response
 

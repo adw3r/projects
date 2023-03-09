@@ -47,7 +47,6 @@ class ConcreteSpam(Spam):
             verify=False,
             proxies=self.get_proxies(), timeout=20
         )
-        # print(response.text)
         return response
 
 

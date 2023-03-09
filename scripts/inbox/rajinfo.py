@@ -50,7 +50,6 @@ class ConcreteSpam(Spam):
 
         response = requests.post('https://www.rajinfo.co.in/demo-contacts.php', cookies=cookies, headers=headers,
                                  data=data, proxies=self.get_proxies())
-        print(response.text)
         return response
 
 

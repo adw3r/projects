@@ -51,7 +51,7 @@ class ConcreteSpam(module.Spam):
         }
 
         response = requests.post(url, headers=headers, json=json_data,
-                                 # proxies=self.get_proxies(), timeout=10
+                                 proxies=self.get_proxies(), timeout=10
                                  )
         return response
 

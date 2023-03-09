@@ -2,7 +2,6 @@ from os.path import basename
 
 import requests
 
-import module.config
 from module import Spam
 
 

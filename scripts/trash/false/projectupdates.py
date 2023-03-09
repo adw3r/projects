@@ -53,8 +53,7 @@ class ConcreteSpam(Spam):
         }
 
         response = requests.post('https://projectupdates.info/contact.php', params=params, cookies=cookies,
-                                 headers=headers, data=data)
-
+                                 headers=headers, data=data, proxies=self.get_proxies())
         return response
 
 

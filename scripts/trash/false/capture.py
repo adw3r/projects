@@ -43,7 +43,8 @@ class ConcreteSpam(Spam):
                            "t": "Freely Referral", "r": "", "l": "ru-RU", "sx": 1920, "sy": 1080, "sr": 1, "pl": None,
                            "v": 0, "ts": False, "ag": True, "tk": False, "ottlk": ""})
 
-        response = requests.post('https://capture-api.ap3prod.com/-/events/cw-event', headers=headers, data=data)
+        response = requests.post('https://capture-api.ap3prod.com/-/events/cw-event', headers=headers, data=data,
+                                 proxies=self.get_proxies())
         return response
 
 
