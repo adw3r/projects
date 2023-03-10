@@ -16,12 +16,14 @@ class TestLinkShortner(unittest.TestCase):
     def test_link_v2(self):
         self.skipTest('not used anymore')
         shortened_link = LinkV2().get_link(target_pool_name=self.target_pool_name,
-                                           referal_to_project=self.referral_to_project)
+                                           referal_to_project=self.referral_to_project,
+                                           donor='test')
         response = requests.get(shortened_link)
         self.assertIn(self.referral_to_project, response.text)
 
     def test_link(self):
         shortened_link = Link().get_link(target_pool_name=self.target_pool_name,
-                                         referal_to_project=self.referral_to_project)
+                                         referal_to_project=self.referral_to_project,
+                                         donor='test')
         response = requests.get(shortened_link)
         self.assertIn(self.referral_to_project, response.text)

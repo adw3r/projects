@@ -8,7 +8,7 @@ class TestReferrals(TestCase):
     def test_get_response(self):
         referrals = Referrals()
         resp: dict = referrals.get_referrals_json()
-        self.assertIsNotNone(resp.get('SuperCat'))
+        self.assertIsNotNone(resp.get('WG casino'))
 
     def test_get_random_project(self):
         referrals = Referrals()

@@ -4,6 +4,9 @@ from module.apis.texts import Text
 
 
 class TestTexts(TestCase):
+    def test_get_texts_from_api(self):
+        text = Text.get_texts_from_api()
+        print(text)
 
     def test_get_text(self):
         lang = 'ru'

@@ -57,7 +57,7 @@ def main():
     s = '1'
 
     spam = ConcreteSpam(
-        basename(__file__)[:-3], s, target_pool_name='alotof', ref_name='AllRight'
+        basename(__file__)[:-3], s
     )
     res = spam.send_post()
     if res:
